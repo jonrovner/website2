@@ -6,6 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style type = "text/css" media = "all">
     
+    body >* {
+        text-align: center;
+    }
     h1 {
         text-align: center;
     }
@@ -29,6 +32,7 @@
         height: 100px;
         grid-template-rows: 50px 50px 50px 50px;
         grid-template-columns: 50px 50px 50px 50px;
+        grid-gap: 10px;
     }
     .board16{   
         text-align: center;
@@ -53,13 +57,12 @@
         
     }
     .chip{
-        
         margin: 5%;
         opacity: 0%;
     }
     .playing {
         opacity: 100%;
-        animation: shake 0.1s;
+        animation: shake 0.2s;
         animation-iteration-count: 1;
     }
     #btn{
@@ -67,13 +70,33 @@
     }
     
     img {
-        opacity: 0%;
         height: 40px;
         width: 40px;
-        margin: 1%;
-
     }
+    .winer {
+        opacity: 100%;
+        animation-name: test; 
+        animation-duration: 0.1s;
+        animation-iteration-count: 2;
+    }
+
     
+
+    @keyframes spin {
+        0% {transform: rotate(30deg);}
+        20% {transform: rotate(60deg);}
+        40% {transform: rotate(120deg);}
+        60% {transform: rotate(180deg);}
+        80% {transform: rotate(240deg);}
+        100% {transform: rotate(360deg);}
+        
+    }
+    @keyframes test {
+        0% {transform: rotate(45deg);}
+        25% {transform: rotate(90deg);}
+        50% {transform: rotate(135deg) scale(2);}
+        100% {transform: rotate(180deg);}
+    }
     @keyframes shake {
           0% { transform: translate(1px, 1px) rotate(0deg); }
           10% { transform: translate(-1px, -2px) rotate(-1deg); }
@@ -105,7 +128,7 @@
     
     function startGame(){
             
-            boardNumber = document.getElementById("boards").value; 
+            boardNumber = document.getElementById("boardSelection").value; 
             boardId = "board"+boardNumber;
             winGoal = parseInt(boardNumber);
             winGoal = winGoal/2;
@@ -150,7 +173,6 @@
 
             images = images.slice(0, boardNumber);
             images = shuffle(images);
-
             images.forEach(function (image){
                     
                     var chip = document.createElement("div");
@@ -184,7 +206,12 @@
                         }
             }   
             if (win == winGoal)
-                {alert("win")};
+                {let chips = Array.from(document.querySelectorAll("img"));
+                 setTimeout(() => {chips.forEach(function (chip){
+                               chip.classList.remove("playing");
+                               chip.classList.add("winer");
+                               });}, 200);
+                            }
         
                             }
     function drawBoard(){
@@ -219,14 +246,20 @@
                 }
 
     
+    
+
+    function playCrisCros(e){
+        console.log(e);
+    }
+
 </script>        
 </head>
     
-<body onload="">
+<body onload="play()">
 <div id="memotest">
 <h1>Memotest</h1>
    
-    <select name="boards" id="boards">
+    <select name="boardSelection" id="boardSelection">
         <option value = "8">baby</option>
         <option value = "16">kid</option>
         <option value= "30">ninja</option>
@@ -239,6 +272,9 @@
 </div>
 <button id="btn" onclick="startGame()">START</button>
 </div>
+
+<div></div>
+
 
     
 
