@@ -1,0 +1,157 @@
+<html>
+    <head>
+        <title>Jonrovner frontend</title>    
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <style type = "text/css" media = "all">
+                        html {
+                box-sizing: border-box;
+                font-size: 10px;
+                background: #220e2b;
+                }
+
+                *, *:before, *:after {
+                box-sizing: inherit;
+                }
+
+                body {
+                padding: 0;
+                margin: 0;
+                font-family: 'Arial';
+                color: blanchedalmond;
+                }
+
+                h1 {
+                text-align: center;
+                font-size: 6rem;
+                line-height: 1;
+                margin-bottom: 0;
+                }
+
+                .score {
+                background: rgba(255,255,255,0.2);
+                padding: 0 3rem;
+                line-height: 1;
+                border-radius: 1rem;
+                }
+
+                .game {
+                width: 600px;
+                height: 400px;
+                display: flex;
+                flex-wrap: wrap;
+                margin: 0 auto;
+                }
+
+                .hole {
+                flex: 1 0 33.33%;
+                overflow: hidden;
+                position: relative;
+                }
+
+                .hole:after {
+                display: block;
+                background: url(dirt.svg) bottom center no-repeat;
+                background-size: contain;
+                content: '';
+                width: 100%;
+                height:70px;
+                position: absolute;
+                z-index: 2;
+                bottom: -30px;
+                }
+
+                .mole {
+                background: url('mole.svg') bottom center no-repeat;
+                background-size: 60%;
+                position: absolute;
+                top: 100%;
+                width: 100%;
+                height: 100%;
+                transition:all 0.4s;
+                }
+
+                .hole.up .mole {
+                top: 0;
+                }
+
+        </style>
+
+    </head>
+    <body>
+    <h1>wes a mole<span class="score">0</span></h1>
+    <button onClick="startGame()">Start!</button>
+
+    <div class="game">
+        <div class="hole hole1">
+        <div class="mole"></div>
+        </div>
+        <div class="hole hole2">
+        <div class="mole"></div>
+        </div>
+        <div class="hole hole3">
+        <div class="mole"></div>
+        </div>
+        <div class="hole hole4">
+        <div class="mole"></div>
+        </div>
+        <div class="hole hole5">
+        <div class="mole"></div>
+        </div>
+        <div class="hole hole6">
+        <div class="mole"></div>
+        </div>
+    </div>
+
+<script>
+  const holes = document.querySelectorAll('.hole');
+  const scoreBoard = document.querySelector('.score');
+  const moles = document.querySelectorAll('.mole');
+  let lasthole;
+  let timeOut = false;
+  let score = 0;
+
+  function randtime(min, max){
+      return Math.round(Math.random() * (max - min) + min);
+  }
+
+  function randHole(holes){
+      const idx = Math.floor(Math.random()* holes.length);
+      const hole = holes[idx];
+      if (hole === lasthole){return randHole(holes)}
+      lasthole = hole;
+      return hole;
+  }
+  function peep() {
+        const time = randtime(200, 3000);
+        const hole = randHole(holes);
+        hole.classList.add("up");
+        setTimeout(() => {
+            hole.classList.remove("up");
+            if (!timeOut) peep();
+
+        }, time);
+
+  }
+  function startGame(){
+      scoreBoard.textContent = 0;
+      timeOut = false;
+      score = 0;
+      peep();
+      setTimeout(() => timeOut = true, 10000)
+    
+  }
+  function bonk(e){
+      if(!e.isTrusted)return;
+      score++;
+      this.classList.remove('up');
+      scoreBoard.textContent = score;
+
+      console.log(score);
+  }
+
+  moles.forEach(mole => mole.addEventListener('click', bonk));
+</script>
+
+
+</body>

@@ -1,0 +1,206 @@
+<html>
+    <head>
+        <title>Jonrovner frontend</title>    
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <style type = "text/css" media = "all">
+
+        body{
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        nav{
+            margin: 1em;
+            height: 2px;
+            border: 1px solid cornflowerblue;
+        }
+
+        .title{
+            margin-left: 3em;
+            align-self: center;
+        }
+        .week{
+            margin-top: 2em;;
+            margin-left: 2em;
+            margin-right: 2em;
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            grid-template-rows: 25px 50px 50px 50px 50px; 
+            row-gap: 1px;
+            column-gap: 1px;
+            
+        }    
+        .menu{
+            margin: 2em;
+            display: grid;
+            grid-template-columns: 100px 100px 100px 100px 100px 100px;
+            grid-template-rows: 50px 50px 50px 50px 50px 50px 50px;
+            row-gap: 1px;
+            column-gap: 1px;
+        }
+        .item {
+            font-weight: bold;
+            background-color: burlywood;
+
+            margin: 1px;
+            display: grid;
+            align-content: center;
+            justify-content: center;
+        }
+
+        .selected {
+
+            border: 2px solid red;
+        }
+        </style>
+    
+    <body onload="">
+       <div id="wrapper"> 
+        <header>
+            <h1 class="title">menu semanal</h1>
+        </header>
+        <nav>
+           
+        </nav>
+        <main>
+            <div class="container week">
+                <div class="item"></div>
+                <div class="item">lunes</div>
+                <div class="item">martes</div>
+                <div class="item">miercoles</div>
+                <div class="item">jueves</div>
+                <div class="item">viernes</div>
+                <div class="item">sabado</div>
+                <div class="item">domingo</div>
+                <div class="item">desayuno</div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item">almuerzo</div>
+                <div class="item main selected" id="main1" onclick="handleWeekClick(this)"></div>
+                <div class="item main" id="main2" onclick="handleWeekClick(this)"></div>
+                <div class="item main" id="main3" onclick="handleWeekClick(this)"></div>
+                <div class="item main" id="main4" onclick="handleWeekClick(this)"></div>
+                <div class="item main" id="main5" onclick="handleWeekClick(this)"></div>
+                <div class="item main" id="main6" onclick="handleWeekClick(this)"></div>
+                <div class="item main" id="main7" onclick="handleWeekClick(this)"></div>
+                <div class="item">merienda</div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item">cena</div>
+                <div class="item main" id="main8" onclick="handleWeekClick(this)"></div>
+                <div class="item main" id="main9" onclick="handleWeekClick(this)"></div>
+                <div class="item main" id="main10" onclick="handleWeekClick(this)"></div>
+                <div class="item main" id="main11" onclick="handleWeekClick(this)"></div>
+                <div class="item main" id="main12" onclick="handleWeekClick(this)"></div>
+                <div class="item main" id="main13" onclick="handleWeekClick(this)"></div>
+                <div class="item main" id="main14" onclick="handleWeekClick(this)"></div>
+                
+            
+            </div>
+            <div class="container menu" id="menu">
+            </div>
+            <form class="addDishes">
+                <input type="text" name="item" placeholder="new idea?" required>
+                <input type="submit" value="agregar">
+
+
+            </form>
+        </main>
+        <footer>
+
+
+        </footer>
+        </div>  
+    <script>
+
+      var addDishes = document.querySelector('.addDishes');
+      
+      var dishes = [
+        "tarta atun",
+        "empanads atun",
+        "arroz a la cubana",
+        "fideos",
+        "tacos",
+        "ñoquis",
+        "sopa",
+        "pollo", 
+        "milanesas",
+        "bifes",
+        "carne al horno",
+        "asado",
+        "risoto calabaza",
+        "risoto remolacha",
+        "merluza",
+        "salmon",
+        "calaba rellena",
+        "mila beren",
+        "hamburguesas",
+        "pizza",
+        "tortilla papa",
+        "buñuelos de vegetales",
+        "falafel"
+      ]      
+      dishes.forEach(function(dish) {
+          var food = document.createElement("div");
+          food.classList.add("item");
+          food.innerHTML = "<p onclick=\"handleClick(this)\">"+dish+"</p>";
+          document.getElementById("menu").appendChild(food); });
+
+      var mainCourses = document.querySelectorAll(".main");
+      var selection = "main1";
+      var clickable = false;  
+
+      function handleWeekClick(e){
+        var selec = e.id;
+        if (e.innerHTML == ""){
+            if (e.id !== "main1"){
+                if (clickable)
+                    {
+                    e.classList.add("selected");
+                    document.getElementById("main1").classList.remove("selected");
+                    clickable = false;
+                    selection = selec;
+                    }
+            }
+            e.innerHTML = ""
+            e.classList.add("selected");
+            clickable = false; 
+            selection = selec;     
+        }
+        e.innerHTML = "";
+        clickable = true;
+      }
+      
+      function handleClick(e){
+          var box = document.getElementById(selection);
+          box.innerHTML = e.innerHTML;
+          box.classList.remove("selected");
+          clickable = true;
+      } 
+
+      function addDish(e){
+          e.preventDefault();
+          const adendum = (this.querySelector('[name=item]')).value;
+          dishes.push(adendum);
+          var food = document.createElement("div");
+          food.classList.add("item");
+          food.innerHTML = "<p onclick=\"handleClick(this)\">"+adendum+"</p>";
+          document.getElementById("menu").appendChild(food) }
+
+      
+      addDishes.addEventListener('submit', addDish);
+      
+    </script>    
+    </body>
+    
