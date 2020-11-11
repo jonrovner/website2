@@ -72,8 +72,8 @@
            
         </nav>
         <main>
-            <p class="infotext">Selecciona una comida y click en el plato que quieres agregar</p>
-            <p class="infotext">click otra vez para borrar el plato</p>
+            <p class="infotext">Arrastra la comida seleccionada a los casilleros en blanco</p>
+            <p class="infotext">click en el casillero para borrar su contenido</p>
             <div class="container week">
                 <div class="item"></div>
                 <div class="item">lunes</div>
@@ -190,16 +190,17 @@
             box.innerHTML = thingToDrag;
             console.log(box);
         }
-        
+
       function addDish(e){
           e.preventDefault();
           const adendum = (this.querySelector('[name=item]')).value;
           dishes.push(adendum);
           var food = document.createElement("div");
           food.classList.add("item");
-          food.innerHTML = "<p onclick=\"handleClick(this)\">"+adendum+"</p>";
-          document.getElementById("menu").appendChild(food) }
-
+          food.draggable = true;
+          food.innerHTML = "<p draggable=\"true\" ondragstart=\"drag(this)\">"+adendum+" </p>";
+          document.getElementById("menu").appendChild(food);
+      }
       
       addDishes.addEventListener('submit', addDish);
       
