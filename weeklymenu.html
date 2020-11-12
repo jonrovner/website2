@@ -132,6 +132,9 @@
 
       var addDishes = document.querySelector('.addDishes');
       
+
+
+
       var dishes = [
         "tarta",
         "empanads",
@@ -158,15 +161,30 @@
         "falafel"
       ];     
        
-      dishes.forEach(function(dish) {
+      
+
+      var thingToDrag = "";
+
+      function populateMenu() {
+          if (localStorage.getItem("dishes")===null){
+            dishes.forEach(function(dish) {
           var food = document.createElement("div");
           food.classList.add("item");
           food.draggable = true;
           food.innerHTML = "<p draggable=\"true\" ondragstart=\"drag(this)\">"+dish+" </p>";
           document.getElementById("menu").appendChild(food);});
-    
-      var thingToDrag = "";
+            localStorage.setItem("dishes", JSON.stringify(dishes));
+          }
+        const dishes = JSON.parse(localStorage.getItem("dishes"));
+        dishes.forEach(function(dish) {
+          var food = document.createElement("div");
+          food.classList.add("item");
+          food.draggable = true;
+          food.innerHTML = "<p draggable=\"true\" ondragstart=\"drag(this)\">"+dish+" </p>";
+          document.getElementById("menu").appendChild(food);});  
 
+      }
+      
       function handleWeekClick(e){
         
         if (e.innerHTML !== ""){
@@ -200,9 +218,11 @@
           food.draggable = true;
           food.innerHTML = "<p draggable=\"true\" ondragstart=\"drag(this)\">"+adendum+" </p>";
           document.getElementById("menu").appendChild(food);
+          localStorage.setItem("dishes", JSON.stringify(dishes));
       }
       
       addDishes.addEventListener('submit', addDish);
+      populateMenu();
       
     </script>    
     </body>
