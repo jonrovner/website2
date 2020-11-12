@@ -9,7 +9,7 @@
 body{
     text-align: center;
 }
-.criscros{
+.tictac{
         text-align: center;
         display: inline-grid;
         height: 300px;
@@ -37,7 +37,7 @@ body{
 
 <h1>TA TE TI</h1>
 
-<div id ="criscros" class="criscros">
+<div id ="tictac" class="tictac">
 
 <div class="box" id="1" onclick="play(this)"></div>
 <div class="box" id="2" onclick="play(this)"></div>
@@ -72,10 +72,10 @@ function checkForWin(playerMoves) {
 	                return playerMoves.indexOf(element) !== -1;
                     });
 
-        if (check) {alert(player + " es el ganador")};
+        if (check) {alert(player + " es el ganador");
+                    location.reload()};
         }
         );
-        
 }
 
 function play(e){
@@ -92,8 +92,6 @@ function play(e){
         checkForWin(PlayerYmoves);
         player = "X";
     }
-
-
 }
 
 </script>
