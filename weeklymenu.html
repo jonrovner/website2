@@ -42,8 +42,7 @@
             column-gap: 1px;
         }
         .item {
-            font-weight: bold;
-            background-color: burlywood;
+            border: 1px solid black;
             margin: 1px;
             display: grid;
             align-content: center;
@@ -59,6 +58,16 @@
         }
         .addDishes {
             margin-left: 3em;
+
+        }
+        .selected {
+            background-color: lightcyan;
+        }
+        #ingredients {
+            align-self: center;
+            height: 100px;
+            width: 500px;
+            border: 1px solid black;
 
         }
         </style>
@@ -120,6 +129,7 @@
             </div>
             <div class="container menu" id="menu">
             </div>
+            <div id="ingredients"></div>
             <form class="addDishes">
                 <input type="text" name="item" placeholder="new idea?" required>
                 <input type="submit" value="agregar">
@@ -129,20 +139,19 @@
 
         </div>  
     <script>
+        var thingToDrag = "";
+        var addDishes = document.querySelector('.addDishes');
 
-      var addDishes = document.querySelector('.addDishes');
-      
-
-
-
-      var dishes = [
-        "tarta",
+        let defaultDishes = [
+        {name: "tarta",
+        ingredients: ["harina", "huevos", "manteca", "espinaca"]
+        },
         "empanads",
         "arroz cubana",
         "fideos",
         "tacos",
-        "ñoquis",
         "sopa",
+        "ñoquis",
         "pollo", 
         "milanesas",
         "bifes",
@@ -163,28 +172,44 @@
        
       
 
-      var thingToDrag = "";
-
       function populateMenu() {
           if (localStorage.getItem("dishes")===null){
+            var dishes = defaultDishes;
             dishes.forEach(function(dish) {
-          var food = document.createElement("div");
-          food.classList.add("item");
-          food.draggable = true;
-          food.innerHTML = "<p draggable=\"true\" ondragstart=\"drag(this)\">"+dish+" </p>";
-          document.getElementById("menu").appendChild(food);});
+                var food = document.createElement("div");
+                food.classList.add("item");
+                food.draggable = true;
+                food.innerHTML = "<p draggable=\"true\" ondragstart=\"drag(this)\" data-ingredients="+dish.ingredients+">"+dish.name+" </p>";
+                document.getElementById("menu").appendChild(food);}
+            );
             localStorage.setItem("dishes", JSON.stringify(dishes));
           }
-        const dishes = JSON.parse(localStorage.getItem("dishes"));
-        dishes.forEach(function(dish) {
+        const storedDishes = JSON.parse(localStorage.getItem("dishes"));
+        storedDishes.forEach(function(dish) {
           var food = document.createElement("div");
           food.classList.add("item");
           food.draggable = true;
-          food.innerHTML = "<p draggable=\"true\" ondragstart=\"drag(this)\">"+dish+" </p>";
+          
+          food.innerHTML = "<p onmouseover=\"mouseOverHandle(this)\" draggable=\"true\" ondragstart=\"drag(this)\" data-ingredients="+dish.ingredients+">"+dish.name+" </p>";
           document.getElementById("menu").appendChild(food);});  
-
       }
       
+      function mouseOverHandle(e){
+          var name = e.innerHTML;
+          e.classList.add("selected");
+          const found = defaultDishes.find(element => name == name);
+          const ingredients = found.ingredients;
+          console.log(ingredients);
+          ingredients.forEach((ingredient) =>{
+              var ingr = document.createElement("p");
+              ingr.innerHTML = ingredient;
+              document.getElementById("ingredients").appendChild(ingr);
+
+
+          });
+
+      }
+
       function handleWeekClick(e){
         
         if (e.innerHTML !== ""){
