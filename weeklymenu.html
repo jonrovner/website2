@@ -6,20 +6,24 @@
         <style type = "text/css" media = "all">
 
         body{
+            border: 1px solid black;
             margin: 0px;
             padding: 0px;
         }
         .infotext {
+            border: 1px solid black
             font-style: italic;
             margin-left: 2em;
         }
         nav{
+            border: 1px solid black
             margin: 1em;
             height: 2px;
             border: 1px solid cornflowerblue;
         }
 
         .title{
+            border: 1px solid black
             margin-left:12em;
         }
         .week{
@@ -40,6 +44,7 @@
             grid-template-rows: 50px 50px 50px 50px 50px;
             row-gap: 1px;
             column-gap: 1px;
+            border: 1px solid black
         }
         .item {
             border: 1px solid black;
@@ -57,18 +62,31 @@
             background-color: pink;
         }
         .addDishes {
+            border: 1px solid black
             margin-left: 3em;
 
         }
         .selected {
             background-color: lightcyan;
         }
-        #ingredients {
-            align-self: center;
-            height: 100px;
-            width: 500px;
-            border: 1px solid black;
-
+        
+        .ingredientsList{
+            
+            display: none;
+            position: relative;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            
+        }
+        .item:hover .ingredientsList {
+            display: block;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            border: 1px solid black
+            
+        
         }
         </style>
     
@@ -129,7 +147,7 @@
             </div>
             <div class="container menu" id="menu">
             </div>
-            <div id="ingredients"></div>
+            
             <form class="addDishes">
                 <input type="text" name="item" placeholder="new idea?" required>
                 <input type="submit" value="agregar">
@@ -138,75 +156,77 @@
         </main>
 
         </div>  
+
+
     <script>
         var thingToDrag = "";
         var addDishes = document.querySelector('.addDishes');
 
         let defaultDishes = [
-        {name: "tarta",
-        ingredients: ["masa pascualina", "huevos", "manteca", "espinaca", "queso"]
-        },
-        "empanads",
-        "arroz cubana",
-        "fideos",
-        "tacos",
-        "sopa",
-        "ñoquis",
-        "pollo", 
-        "milanesas",
-        "bifes",
-        "carne",
-        "asado",
-        "risoto calabaza",
-        "risoto remolacha",
-        "merluza",
-        "salmon",
-        "calaba rellena",
-        "mila beren",
-        "hamburguesas",
-        "pizza",
-        "tortilla",
-        "buñuelos",
-        "falafel"
-      ];     
-       
+                        {name: "tarta",
+                        ingredients: [
+                                    "masa pascualina", 
+                                    "huevos", 
+                                    "manteca", 
+                                    "espinaca", 
+                                    "queso"]
+                        },
+                        {name: "empanads",
+                        ingredients: [
+                                    "tapas empanadas", 
+                                    "lata atun", 
+                                    "papas", 
+                                    "cebollas"]
+                        },
+                        {name:"arroz cubana",
+                        ingredients: [
+                                      "arroz",
+                                      "banana",
+                                      "huevos",
+                                      "salchichas"]
+                        },
+                        {name:"fideos",
+                        ingredients: [
+                                      "fideos",
+                                      "lata tomate",
+                                      "queso rallado"
+                        ]},
+                        ];
+        
+
+      function getDishes(){
+            if (localStorage.getItem("dishes")===null){
+            return defaultDishes.slice();
+            }      
+            return JSON.parse(localStorage.getItem("dishes"));   
+        
+      }
       function populateMenu() {
-          if (localStorage.getItem("dishes")===null){
-            var dishes = defaultDishes;
+        const dishes = getDishes();
+          
             dishes.forEach(function(dish) {
+                var dis = dish.name
                 var food = document.createElement("div");
                 food.classList.add("item");
                 food.draggable = true;
-                food.innerHTML = "<p draggable=\"true\" ondragstart=\"drag(this)\" data-ingredients="+dish.ingredients+">"+dish.name+" </p>";
-                document.getElementById("menu").appendChild(food);}
+                
+                food.innerHTML = "<p draggable=\"true\" ondragstart=\"drag(this)\" >"+dis+" </p><div class=\"ingredientsList\" id=\""+dis+"\"></div>";
+                
+                document.getElementById("menu").appendChild(food);
+                var ings = dish.ingredients;
+                ings.forEach(function(i){
+                    var ing = document.createElement("p");
+                    ing.innerHTML = i;
+                    document.getElementById(dis).appendChild(ing);
+                    
+                });
+                
+                }
             );
+             
             localStorage.setItem("dishes", JSON.stringify(dishes));
           }
-        const storedDishes = JSON.parse(localStorage.getItem("dishes"));
-        storedDishes.forEach(function(dish) {
-          var food = document.createElement("div");
-          food.classList.add("item");
-          food.draggable = true;
-          
-          food.innerHTML = "<p onmouseover=\"mouseOverHandle(this)\" draggable=\"true\" ondragstart=\"drag(this)\" data-ingredients="+dish.ingredients+">"+dish.name+" </p>";
-          document.getElementById("menu").appendChild(food);});  
-      }
-      
-      function mouseOverHandle(e){
-          var name = e.innerHTML;
-          e.classList.add("selected");
-          const found = defaultDishes.find(element => name == name);
-          const ingredients = found.ingredients;
-          console.log(ingredients);
-          ingredients.forEach((ingredient) =>{
-              var ingr = document.createElement("p");
-              ingr.innerHTML = ingredient;
-              document.getElementById("ingredients").appendChild(ingr);
-
-
-          });
-
-      }
+        
 
       function handleWeekClick(e){
         
@@ -215,12 +235,12 @@
         }
       }
       
-
       function allowDrop(e) {
             e.preventDefault();
             }
 
         function drag(e) {
+            console.log(e);
             thingToDrag = e.innerHTML;
             console.log(thingToDrag);
         }
