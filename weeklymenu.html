@@ -11,19 +11,19 @@
             padding: 0px;
         }
         .infotext {
-            border: 1px solid black
+            border: 1px solid black;
             font-style: italic;
             margin-left: 2em;
         }
         nav{
-            border: 1px solid black
+            border: 1px solid black;
             margin: 1em;
             height: 2px;
             border: 1px solid cornflowerblue;
         }
 
         .title{
-            border: 1px solid black
+            border: 1px solid black;
             margin-left:12em;
         }
         .week{
@@ -62,16 +62,22 @@
             background-color: pink;
         }
         .addDishes {
-            border: 1px solid black
+            border: 1px solid black;
             margin-left: 3em;
+            margin-right: 3em;
 
         }
         .selected {
             background-color: lightcyan;
         }
         
+        .ingredients{
+            margin: 5px;
+            border: 1px solid black;
+            min-height: 2em;
+        }
         .ingredientsList{
-            
+           
             display: none;
             position: relative;
             background-color: #f1f1f1;
@@ -84,7 +90,7 @@
             position: fixed;
             bottom: 0;
             right: 0;
-            border: 1px solid black
+            border: 1px solid black;
             
         
         }
@@ -101,6 +107,7 @@
         <main>
             <p class="infotext">Arrastra la comida seleccionada a los casilleros en blanco</p>
             <p class="infotext">click en el casillero para borrar su contenido</p>
+            
             <div class="container week">
                 <div class="item"></div>
                 <div class="item">lunes</div>
@@ -145,12 +152,16 @@
                 
             
             </div>
+
             <div class="container menu" id="menu">
             </div>
-            
+            <p class="infotext">completa la lista de ingredientes, el nombre del plato y apreta "agregar"</p>
             <form class="addDishes">
-                <input type="text" name="item" placeholder="new idea?" required>
-                <input type="submit" value="agregar">
+                plato: <input type="text" name="item" placeholder="new dish?" required>
+                ingredientes: <input type="text" name="ingredient" placeholder="add ingredient" required>
+                <button id="addIngredient">+</button>
+                <div class="ingredients" id="ingredientsToAdd"></div>
+                <button id="newDish">AGREGAR</button>
             </form>
 
         </main>
@@ -160,7 +171,8 @@
 
     <script>
         var thingToDrag = "";
-        var addDishes = document.querySelector('.addDishes');
+        var ingredientsToAdd = [];
+        
 
         let defaultDishes = [
                         {name: "tarta",
@@ -192,80 +204,87 @@
                                       "queso rallado"
                         ]},
                         ];
-        
-
-      function getDishes(){
+                        
+        function getDishes(){
             if (localStorage.getItem("dishes")===null){
             return defaultDishes.slice();
             }      
             return JSON.parse(localStorage.getItem("dishes"));   
         
       }
-      function populateMenu() {
-        const dishes = getDishes();
-          
+      
+        function populateMenu() {
+            const dishes = getDishes();         
             dishes.forEach(function(dish) {
                 var dis = dish.name
                 var food = document.createElement("div");
                 food.classList.add("item");
                 food.draggable = true;
-                
                 food.innerHTML = "<p draggable=\"true\" ondragstart=\"drag(this)\" >"+dis+" </p><div class=\"ingredientsList\" id=\""+dis+"\"></div>";
-                
                 document.getElementById("menu").appendChild(food);
                 var ings = dish.ingredients;
                 ings.forEach(function(i){
                     var ing = document.createElement("p");
                     ing.innerHTML = i;
-                    document.getElementById(dis).appendChild(ing);
-                    
-                });
-                
+                    document.getElementById(dis).appendChild(ing); 
+                });  
                 }
             );
-             
             localStorage.setItem("dishes", JSON.stringify(dishes));
-          }
+        }
         
-
-      function handleWeekClick(e){
+        function handleWeekClick(e){
         
         if (e.innerHTML !== ""){
             e.innerHTML = "";
         }
       }
       
-      function allowDrop(e) {
+        function allowDrop(e) {
             e.preventDefault();
             }
 
         function drag(e) {
-            console.log(e);
+            
             thingToDrag = e.innerHTML;
-            console.log(thingToDrag);
+            
         }
 
         function drop(e) {
             e.preventDefault();
             var box = document.getElementById(e.target.id);
             box.innerHTML = thingToDrag;
-            console.log(box);
+            
         }
 
-      function addDish(e){
+        function addIngredient(e){
+          
           e.preventDefault();
-          const adendum = (this.querySelector('[name=item]')).value;
-          dishes.push(adendum);
-          var food = document.createElement("div");
-          food.classList.add("item");
-          food.draggable = true;
-          food.innerHTML = "<p draggable=\"true\" ondragstart=\"drag(this)\">"+adendum+" </p>";
-          document.getElementById("menu").appendChild(food);
-          localStorage.setItem("dishes", JSON.stringify(dishes));
-      }
+          const ingredient = (document.querySelector('[name=ingredient]')).value;
+          ingredientsToAdd.push(ingredient);
+          var ing = document.createElement("p");
+          ing.innerHTML = ingredient;
+          document.getElementById("ingredientsToAdd").appendChild(ing);
+        }
+
+        function addDish(e){
+          e.preventDefault();
+          let objectToadd = {
+              name: (document.querySelector('[name=item]')).value,
+              ingredients:ingredientsToAdd
+          }    
+          var dis = JSON.parse(localStorage.getItem("dishes"));
+          dis.push(objectToadd);
+          localStorage.setItem("dishes", JSON.stringify(dis));
+          document.getElementById("menu").innerHTML = "";
+          populateMenu();
+          document.getElementById("ingredientsToAdd").innerHTML = "";
+          ingredientsToAdd = [];
+        }
       
-      addDishes.addEventListener('submit', addDish);
-      populateMenu();
+        document.getElementById("addIngredient").addEventListener('click', addIngredient);
+        document.getElementById("newDish").addEventListener('click', addDish)
+        populateMenu();
       
     </script>    
     </body>
