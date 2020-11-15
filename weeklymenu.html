@@ -11,19 +11,13 @@
             padding: 0px;
         }
         .infotext {
-            border: 1px solid black;
             font-style: italic;
+            font-weight: lighter;
             margin-left: 2em;
         }
-        nav{
-            border: 1px solid black;
-            margin: 1em;
-            height: 2px;
-            border: 1px solid cornflowerblue;
-        }
+        
 
         .title{
-            border: 1px solid black;
             margin-left:12em;
         }
         .week{
@@ -41,7 +35,7 @@
             margin: 2em;
             display: grid;
             grid-template-columns: 100px 100px 100px 100px 100px 100px;
-            grid-template-rows: 50px 50px 50px 50px 50px;
+            grid-template-rows: 50px 50px;
             row-gap: 1px;
             column-gap: 1px;
             border: 1px solid black
@@ -88,12 +82,28 @@
         .item:hover .ingredientsList {
             display: block;
             position: fixed;
-            bottom: 0;
-            right: 0;
+            bottom: 10px;
+            right: 10px;
             border: 1px solid black;
             
         
         }
+        .item:hover .ingredientsList * {
+            margin-left: 1em;
+        }
+        .maincontainer{
+            margin: 1em;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            border: 1px solid black;
+        }
+
+        #shoppingList{
+            margin: 1em;
+            border: 1px solid black;
+        }
+
+
         </style>
     
     <body onload="">
@@ -105,8 +115,7 @@
            
         </nav>
         <main>
-            <p class="infotext">Arrastra la comida seleccionada a los casilleros en blanco</p>
-            <p class="infotext">click en el casillero para borrar su contenido</p>
+            
             
             <div class="container week">
                 <div class="item"></div>
@@ -152,8 +161,11 @@
                 
             
             </div>
-
+            <p class="infotext">Arrastra la comida seleccionada a los casilleros en blanco, click en el casillero para borrar su contenido</p>
+            <div class="maincontainer">
             <div class="container menu" id="menu">
+            </div>
+            <div id="shoppingList"></div>
             </div>
             <p class="infotext">completa la lista de ingredientes, el nombre del plato y apreta "agregar"</p>
             <form class="addDishes">
@@ -247,6 +259,14 @@
         function drag(e) {
             
             thingToDrag = e.innerHTML;
+            var dishes = JSON.parse(localStorage.getItem("dishes"));
+            console.log(dishes);
+            console.log(thingToDrag);
+            dishes.forEach((e) => {
+                var exists = Object.values(e).some(function(k) { return k === thingToDrag; });
+                console.log(exists);
+        });
+
             
         }
 
