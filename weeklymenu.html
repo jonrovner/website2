@@ -114,9 +114,7 @@
         <nav>
            
         </nav>
-        <main>
-            
-            
+        <main>   
             <div class="container week">
                 <div class="item"></div>
                 <div class="item">lunes</div>
@@ -184,8 +182,8 @@
     <script>
         var thingToDrag = "";
         var ingredientsToAdd = [];
+        var ingredientsToShop = [];
         
-
         let defaultDishes = [
                         {name: "tarta",
                         ingredients: [
@@ -224,27 +222,33 @@
             return JSON.parse(localStorage.getItem("dishes"));   
         
       }
-      
+      ///   
         function populateMenu() {
             const dishes = getDishes();         
             dishes.forEach(function(dish) {
                 var dis = dish.name
+                var ings = dish.ingredients;
                 var food = document.createElement("div");
                 food.classList.add("item");
-                food.draggable = true;
-                food.innerHTML = "<p draggable=\"true\" ondragstart=\"drag(this)\" >"+dis+" </p><div class=\"ingredientsList\" id=\""+dis+"\"></div>";
+                //food.draggable = true;
+                food.innerHTML = "<p draggable=\"true\" ondragstart=\"drag(this)\">"+dis+"</p><div class=\"ingredientsList\" id=\""+dis+"\"></div>";
                 document.getElementById("menu").appendChild(food);
-                var ings = dish.ingredients;
+                
                 ings.forEach(function(i){
                     var ing = document.createElement("p");
-                    ing.innerHTML = i;
+                    ing.innerHTML = i+" ";
                     document.getElementById(dis).appendChild(ing); 
                 });  
                 }
+                
             );
             localStorage.setItem("dishes", JSON.stringify(dishes));
         }
         
+        function getList(e){
+            
+        }
+
         function handleWeekClick(e){
         
         if (e.innerHTML !== ""){
@@ -257,25 +261,33 @@
             }
 
         function drag(e) {
-            
-            thingToDrag = e.innerHTML;
+            thingToDrag = e.innerHTML
             var dishes = JSON.parse(localStorage.getItem("dishes"));
-            console.log(dishes);
-            console.log(thingToDrag);
-            dishes.forEach((e) => {
-                var exists = Object.values(e).some(function(k) { return k === thingToDrag; });
-                console.log(exists);
-        });
-
-            
+            var x = search(e.textContent, dishes);
+            var arr = x.ingredients;
+            arr.forEach((e) => ingredientsToAdd.push(e));
         }
+
+        function search(nameKey, myArray){
+                for (var i=0; i < myArray.length; i++) {
+                    if (myArray[i].name === nameKey) {
+                    return myArray[i];
+                    }
+                }
+            }
 
         function drop(e) {
             e.preventDefault();
             var box = document.getElementById(e.target.id);
             box.innerHTML = thingToDrag;
-            
-        }
+            ingredientsToAdd.forEach(function(i){
+                if(ingredientsToShop.indexOf(i == -1)) {
+                    ingredientsToShop.push(i)}
+            });
+            ingredientsToAdd = [];
+            console.log(ingredientsToShop);
+            document.querySelector("#shoppingList").innerHTML = ingredientsToShop.join(", ");
+            }
 
         function addIngredient(e){
           
