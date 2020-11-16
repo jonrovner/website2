@@ -26,13 +26,13 @@
             margin-right: 2em;
             display: grid;
             grid-template-columns: repeat(8, 1fr);
-            grid-template-rows: 25px 50px 50px 50px 50px; 
+            grid-template-rows: 25px 50px 50px; 
             row-gap: 1px;
             column-gap: 1px;
             
         }    
         .menu{
-            margin: 2em;
+            margin: 1em;
             display: grid;
             grid-template-columns: 100px 100px 100px 100px 100px 100px;
             grid-template-rows: 50px 50px;
@@ -99,6 +99,7 @@
         }
 
         #shoppingList{
+            min-height: 50px;
             margin: 1em;
             border: 1px solid black;
         }
@@ -124,14 +125,6 @@
                 <div class="item">viernes</div>
                 <div class="item">sabado</div>
                 <div class="item">domingo</div>
-                <div class="item">desayuno</div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
                 <div class="item">almuerzo</div>
                 <div class="item main" id="main1" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                 <div class="item main" id="main2" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
@@ -140,14 +133,6 @@
                 <div class="item main" id="main5" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                 <div class="item main" id="main6" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                 <div class="item main" id="main7" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="item">merienda</div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
                 <div class="item">cena</div>
                 <div class="item main" id="main8" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                 <div class="item main" id="main9" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
@@ -163,7 +148,8 @@
             <div class="maincontainer">
             <div class="container menu" id="menu">
             </div>
-            <div id="shoppingList"></div>
+            <div id="shoppingListContainer">shopping list:<div id="shoppingList"></div>
+            </div>
             </div>
             <p class="infotext">completa la lista de ingredientes, el nombre del plato y apreta "agregar"</p>
             <form class="addDishes">
@@ -222,7 +208,7 @@
             return JSON.parse(localStorage.getItem("dishes"));   
         
       }
-      ///   
+     
         function populateMenu() {
             const dishes = getDishes();         
             dishes.forEach(function(dish) {
@@ -230,10 +216,8 @@
                 var ings = dish.ingredients;
                 var food = document.createElement("div");
                 food.classList.add("item");
-                //food.draggable = true;
                 food.innerHTML = "<p draggable=\"true\" ondragstart=\"drag(this)\">"+dis+"</p><div class=\"ingredientsList\" id=\""+dis+"\"></div>";
                 document.getElementById("menu").appendChild(food);
-                
                 ings.forEach(function(i){
                     var ing = document.createElement("p");
                     ing.innerHTML = i+" ";
@@ -243,10 +227,6 @@
                 
             );
             localStorage.setItem("dishes", JSON.stringify(dishes));
-        }
-        
-        function getList(e){
-            
         }
 
         function handleWeekClick(e){
@@ -278,25 +258,21 @@
 
         function drop(e) {
             e.preventDefault();
-            var box = document.getElementById(e.target.id);
-            box.innerHTML = thingToDrag;
-            ingredientsToAdd.forEach(function(i){
-                if(ingredientsToShop.indexOf(i == -1)) {
-                    ingredientsToShop.push(i)}
-            });
+            document.getElementById(e.target.id).innerHTML = thingToDrag;
+            ingredientsToAdd.forEach((i) => ingredientsToShop.push(i));
             ingredientsToAdd = [];
-            console.log(ingredientsToShop);
-            document.querySelector("#shoppingList").innerHTML = ingredientsToShop.join(", ");
+            let unique = [...new Set(ingredientsToShop)];
+            document.querySelector("#shoppingList").innerHTML = unique.join(", ");
             }
 
         function addIngredient(e){
-          
           e.preventDefault();
           const ingredient = (document.querySelector('[name=ingredient]')).value;
           ingredientsToAdd.push(ingredient);
           var ing = document.createElement("p");
           ing.innerHTML = ingredient;
           document.getElementById("ingredientsToAdd").appendChild(ing);
+         
         }
 
         function addDish(e){
@@ -313,7 +289,7 @@
           document.getElementById("ingredientsToAdd").innerHTML = "";
           ingredientsToAdd = [];
         }
-      
+
         document.getElementById("addIngredient").addEventListener('click', addIngredient);
         document.getElementById("newDish").addEventListener('click', addDish)
         populateMenu();
