@@ -14,9 +14,6 @@
 
         body::after{
                     content: "";
-                    background: url(food.png);
-                    background-size: 20px;
-                    background-repeat: repeat;
                     opacity: 0.02;
                     top: 0;
                     left: 0;
@@ -64,7 +61,7 @@
             margin: 1px;
             font-family: arial;
             font-weight: bold;
-            border-radius: 1em;
+            border-radius: 0.5em;
             display: grid;
             align-content: center;
             justify-content: center;
@@ -78,9 +75,8 @@
             background-color: pink;
         }
         .addDishes {
-            border: 1px solid black;
-            margin-left: 3em;
-            margin-right: 3em;
+           background-color: cornsilk;
+            margin: 1em;
 
         }
         .selected {
@@ -88,8 +84,8 @@
         }
         
         .ingredients{
+            background-color: blanchedalmond;
             margin: 5px;
-            border: 1px solid black;
             min-height: 2em;
         }
         .ingredientsList{
@@ -174,7 +170,7 @@
             <div id="shoppingListContainer">shopping list:<div id="shoppingList"></div>
             </div>
             </div>
-            <p class="infotext">Complete the ingredient list, the dish name, and hit on add button</p>
+            <p class="infotext">Complete the ingredient list, the dish name, and click the "add" button</p>
             <form class="addDishes">
                 Dish name: <input type="text" name="item" placeholder="new dish?" required>
                 Ingredients: <input type="text" name="ingredient" placeholder="add ingredient" required>
