@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>weekly meal shopping planner</title>    
+        <title>my meal planner</title>    
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <style type = "text/css" media = "all">
@@ -34,7 +34,9 @@
         
 
         .title{
-            margin-left:12em;
+            font-family: Arial;
+            font-size: smaller;
+            margin-left:2em;
         }
         .week{
             margin-top: 2em;;
@@ -103,8 +105,8 @@
             
             display: block;
             position: fixed;
-            bottom: 10px;
-            right: 10px;
+            bottom: 100px;
+            right: 100px;
             border: 1px solid black;
             
         
@@ -127,27 +129,26 @@
         }
 
 
-        </style>
-    
+        </style> 
     <body onload="">
        <div id="wrapper"> 
         <header>
-            <h1 class="title">Menu Semanal</h1>
+            <h1 class="title">My Weekly Meal Planner</h1>
         </header>
         <nav>
            
         </nav>
         <main>   
             <div class="container week">
-                <div class="item"></div>
-                <div class="item">lunes</div>
-                <div class="item">martes</div>
-                <div class="item">miercoles</div>
-                <div class="item">jueves</div>
-                <div class="item">viernes</div>
-                <div class="item">sabado</div>
-                <div class="item">domingo</div>
-                <div class="item">almuerzo</div>
+                <div class="item" style="visibility: hidden;"></div>
+                <div class="item">Monday</div>
+                <div class="item">Tuesday</div>
+                <div class="item">Wednesday</div>
+                <div class="item">Thursday</div>
+                <div class="item">Friday</div>
+                <div class="item">Saturday</div>
+                <div class="item">Sunday</div>
+                <div class="item">Lunch</div>
                 <div class="item main" id="main1" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                 <div class="item main" id="main2" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                 <div class="item main" id="main3" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
@@ -155,7 +156,7 @@
                 <div class="item main" id="main5" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                 <div class="item main" id="main6" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                 <div class="item main" id="main7" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="item">cena</div>
+                <div class="item">Dinner</div>
                 <div class="item main" id="main8" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                 <div class="item main" id="main9" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                 <div class="item main" id="main10" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
@@ -166,20 +167,20 @@
                 
             
             </div>
-            <p class="infotext">Arrastra la comida seleccionada a los casilleros en blanco, click en el casillero para borrar su contenido</p>
+            <p class="infotext">Drag dishes into calendar. Click on added dishes to delete them</p>
             <div class="maincontainer">
             <div class="container menu" id="menu">
             </div>
             <div id="shoppingListContainer">shopping list:<div id="shoppingList"></div>
             </div>
             </div>
-            <p class="infotext">completa la lista de ingredientes, el nombre del plato y apreta "agregar"</p>
+            <p class="infotext">Complete the ingredient list, the dish name, and hit on add button</p>
             <form class="addDishes">
-                plato: <input type="text" name="item" placeholder="new dish?" required>
-                ingredientes: <input type="text" name="ingredient" placeholder="add ingredient" required>
+                Dish name: <input type="text" name="item" placeholder="new dish?" required>
+                Ingredients: <input type="text" name="ingredient" placeholder="add ingredient" required>
                 <button id="addIngredient">+</button>
                 <div class="ingredients" id="ingredientsToAdd"></div>
-                <button id="newDish">AGREGAR</button>
+                <button id="newDish">ADD</button>
             </form>
 
         </main>
@@ -193,33 +194,35 @@
         var ingredientsToShop = [];
         
         let defaultDishes = [
-                        {name: "tarta",
+                        {name: "Falafel",
                         ingredients: [
-                                    "masa pascualina", 
-                                    "huevos", 
-                                    "manteca", 
-                                    "espinaca", 
-                                    "queso"]
+                                    "cheekpeas", 
+                                    "persil", 
+                                    "coriander", 
+                                    "pita bread", 
+                                    "yoghurt sauce"]
                         },
-                        {name: "empanads",
+                        {name: "empanadas",
                         ingredients: [
-                                    "tapas empanadas", 
-                                    "lata atun", 
-                                    "papas", 
-                                    "cebollas"]
+                                    "dough", 
+                                    "tuna", 
+                                    "potatoes", 
+                                    "onions",
+                                    "olives"]
                         },
-                        {name:"arroz cubana",
+                        {name:"cuban rice",
                         ingredients: [
-                                      "arroz",
-                                      "banana",
-                                      "huevos",
-                                      "salchichas"]
+                                      "rice",
+                                      "bananas",
+                                      "eggs",
+                                      "sausages"]
                         },
-                        {name:"fideos",
+                        {name:"pasta",
                         ingredients: [
-                                      "fideos",
-                                      "lata tomate",
-                                      "queso rallado"
+                                      "noodles",
+                                      "tomatoes",
+                                      "garlic",
+                                      "cheese"
                         ]},
                         ];
                         
@@ -233,17 +236,17 @@
      
         function populateMenu() {
             const dishes = getDishes();         
-            dishes.forEach(function(dish) {
-                var dis = dish.name
-                var ings = dish.ingredients;
+            dishes.forEach(function(d) {
+                var dish = d.name
+                var ings = d.ingredients;
                 var food = document.createElement("div");
                 food.classList.add("item");
-                food.innerHTML = "<p draggable=\"true\" ondragstart=\"drag(this)\">"+dis+"</p><div class=\"ingredientsList\" id=\""+dis+"\"></div>";
+                food.innerHTML = "<p draggable=\"true\" ondragstart=\"drag(this)\">"+dish+"</p><div class=\"ingredientsList\" id=\""+dish+"\"></div>";
                 document.getElementById("menu").appendChild(food);
                 ings.forEach(function(i){
                     var ing = document.createElement("p");
                     ing.innerHTML = i+" ";
-                    document.getElementById(dis).appendChild(ing); 
+                    document.getElementById(dish).appendChild(ing); 
                 });  
                 }
                 
@@ -252,6 +255,17 @@
         }
 
         function handleWeekClick(e){
+            const content = e.textContent;
+            var dishes = JSON.parse(localStorage.getItem("dishes"));
+            var x = search(e.textContent, dishes);
+            var arr = x.ingredients;
+            arr.forEach((e) => {
+                for( var i = 0; i < ingredientsToShop.length; i++)
+                { if ( ingredientsToShop[i] === e) { ingredientsToShop.splice(i, 1); }}
+            });
+            let unique = [...new Set(ingredientsToShop)];
+            document.querySelector("#shoppingList").innerHTML = unique.join(", ");
+
         
         if (e.innerHTML !== ""){
             e.innerHTML = "";
