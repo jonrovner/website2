@@ -1,29 +1,20 @@
 <html>
     <head>
-        <title>my meal planner</title>    
+        <title>what we eat</title>    
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Open+Sans:wght@300&display=swap" rel="stylesheet"> 
         <style type = "text/css" media = "all">
 
         body{
-            
-            
+            box-sizing: border-box;
             margin: 0px;
             padding: 0px;
         }
-
-        body::after{
-                    content: "";
-                    opacity: 0.02;
-                    top: 0;
-                    left: 0;
-                    bottom: 0;
-                    right: 0;
-                    position: absolute;
-                    z-index: -1;   
-        }
-        
+ 
         .infotext {
+            font-family: 'Open Sans', sans-serif;
             font-style: italic;
             font-weight: lighter;
             margin-left: 2em;
@@ -31,12 +22,14 @@
         
 
         .title{
-            font-family: Arial;
-            font-size: smaller;
-            margin-left:2em;
+            display: grid;
+            font-family: 'Amatic SC', cursive;
+            margin: 2em;
+            
+            justify-items: center;
+            align-items: center;
         }
         .week{
-            margin-top: 2em;;
             margin-left: 2em;
             margin-right: 2em;
             display: grid;
@@ -50,23 +43,36 @@
             margin: 1em;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: 50px 50px;
-            row-gap: 1px;
-            column-gap: 1px;
+            grid-template-rows: auto;
+            row-gap: 1em;
+            column-gap: 1em;
             
         }
         .item {
-            background-color: mistyrose;
-            border: 1px dotted lightcyan;
-            margin: 1px;
-            font-family: arial;
-            font-weight: bold;
-            border-radius: 0.5em;
+            position: relative;
+            font-family: 'Amatic SC', cursive;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+           
+            border-radius: 0.1em;
             display: grid;
             align-content: center;
             justify-content: center;
             cursor: move;
         }
+
+        .item p {
+            padding: 5px;
+            background-color:black;
+            color: blanchedalmond;
+        }
+
+        .centered {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+}
 
         .selected {
             border: 2px solid red;
@@ -89,27 +95,17 @@
             min-height: 2em;
         }
         .ingredientsList{
-           
-            display: none;
+            margin-left: 1em;
+           font-family: Arial, Helvetica, sans-serif;
+           font-style: italic;
+           font-size: smaller;
             position: relative;
             background-color: #f1f1f1;
             min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             
         }
-        .item:hover .ingredientsList {
-            
-            display: block;
-            position: fixed;
-            bottom: 100px;
-            right: 100px;
-            border: 1px solid black;
-            
         
-        }
-        .item:hover .ingredientsList * {
-            margin-left: 1em;
-        }
         .maincontainer{
             margin: 0.5em;
             display: grid;
@@ -124,12 +120,20 @@
             
         }
 
+        #addNewDishForm{
+            display: none;
+        } 
+
+        #addNewDishForm .visible {
+            display: block;
+        }
+
 
         </style> 
     <body onload="">
        <div id="wrapper"> 
         <header>
-            <h1 class="title">My Weekly Meal Planner</h1>
+            <h1 class="title">WhatWeEater</h1>
         </header>
         <nav>
            
@@ -167,18 +171,22 @@
             <div class="maincontainer">
             <div class="container menu" id="menu">
             </div>
-            <div id="shoppingListContainer">shopping list:<div id="shoppingList"></div>
+           
+           
             </div>
-            </div>
-            <p class="infotext">Complete the ingredient list, the dish name, and click the "add" button</p>
+            <button class="newDishBtn" onclick="openAddDishForm()">Add New Dish</button>
+            <div id="AddNewDishForm">
             <form class="addDishes">
                 Dish name: <input type="text" name="item" placeholder="new dish?" required>
                 Ingredients: <input type="text" name="ingredient" placeholder="add ingredient" required>
                 <button id="addIngredient">+</button>
                 <div class="ingredients" id="ingredientsToAdd"></div>
                 <button id="newDish">ADD</button>
+            
             </form>
-
+            </div>
+            <div id="shoppingListContainer">shopping list:<div id="shoppingList"></div>
+            </div>
         </main>
 
         </div>  
@@ -196,7 +204,8 @@
                                     "persil", 
                                     "coriander", 
                                     "pita bread", 
-                                    "yoghurt sauce"]
+                                    "yoghurt sauce"],
+                        image: "falafel.jpg"            
                         },
                         {name: "empanadas",
                         ingredients: [
@@ -204,14 +213,17 @@
                                     "tuna", 
                                     "potatoes", 
                                     "onions",
-                                    "olives"]
+                                    "olives"],
+                        image: "empanadas.jpg"
+
                         },
                         {name:"cuban rice",
                         ingredients: [
                                       "rice",
                                       "bananas",
                                       "eggs",
-                                      "sausages"]
+                                      "sausages"],
+                        image: "cuban.jpg"
                         },
                         {name:"pasta",
                         ingredients: [
@@ -219,7 +231,9 @@
                                       "tomatoes",
                                       "garlic",
                                       "cheese"
-                        ]},
+                        ],
+                        image: "noodles.jpg"
+                        },
                         ];
                         
         function getDishes(){
@@ -235,15 +249,18 @@
             dishes.forEach(function(d) {
                 var dish = d.name
                 var ings = d.ingredients;
+                var image = d.image;
                 var food = document.createElement("div");
                 food.classList.add("item");
-                food.innerHTML = "<p draggable=\"true\" ondragstart=\"drag(this)\">"+dish+"</p><div class=\"ingredientsList\" id=\""+dish+"\"></div>";
+                food.innerHTML = ` 
+                        <img src=${image} alt=${dish} style=\"width: 100%; height: 100%\">
+                        <p class=\"centered\" draggable=\"true\" ondragstart=\"drag(this)\">${dish}</p>
+                        <div class=\"ingredientsList\" id=\"${dish}\"></div>
+                        `;
                 document.getElementById("menu").appendChild(food);
-                ings.forEach(function(i){
-                    var ing = document.createElement("p");
-                    ing.innerHTML = i+" ";
-                    document.getElementById(dish).appendChild(ing); 
-                });  
+                document.getElementById(dish).innerHTML = ings.join(", ");
+               
+                 
                 }
                 
             );
@@ -320,6 +337,10 @@
           populateMenu();
           document.getElementById("ingredientsToAdd").innerHTML = "";
           ingredientsToAdd = [];
+        }
+        function openAddDishForm(){
+            console.log("OPENING");
+            document.getElementById("AddNewDishForm").style = "display:block; position:absolute";
         }
 
         document.getElementById("addIngredient").addEventListener('click', addIngredient);
