@@ -4,7 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Open+Sans:wght@300&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Open+Sans:wght@200&display=swap" rel="stylesheet"> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <style type = "text/css" media = "all">
 
         body{
@@ -12,22 +13,22 @@
             margin: 0px;
             padding: 0px;
         }
- 
+        #wrapper{
+            display: flex;
+            flex-direction: column;
+        }
         .infotext {
             font-family: 'Open Sans', sans-serif;
             font-style: italic;
             font-weight: lighter;
+            font-size: small;
             margin-left: 2em;
         }
-        
-
         .title{
             display: grid;
             font-family: 'Amatic SC', cursive;
-            margin: 2em;
-            
+            margin-bottom: 2rem;
             justify-items: center;
-            align-items: center;
         }
         .week{
             margin-left: 2em;
@@ -35,35 +36,71 @@
             display: grid;
             grid-template-columns: repeat(8, 1fr);
             grid-template-rows: 25px 50px 50px; 
-            row-gap: 1px;
-            column-gap: 1px;
+            row-gap: 0.5rem;
+            column-gap: 0.5rem;
             
         }    
         .menu{
-            margin: 1em;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: auto;
-            row-gap: 1em;
-            column-gap: 1em;
+            margin-left: 2em;
+            margin-right: 2em;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;    
+            row-gap: 1rem;
+            column-gap: 1rem;
+            justify-content: center;
             
         }
+        
         .item {
             position: relative;
             font-family: 'Amatic SC', cursive;
             box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
-           
-            border-radius: 0.1em;
+            border-radius: 0.3rem;
             display: grid;
             align-content: center;
             justify-content: center;
             cursor: move;
         }
 
-        .item p {
-            padding: 5px;
+        .menuitem {
+            max-width: 15rem;
+            min-height: 15rem;
+            position: relative;
+            font-family: 'Amatic SC', cursive;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 0.3rem;
+            cursor: move;
+            transition: all 0.3s;
+        }
+
+        .menuitem .dishTitle {
+            font-size: x-large;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
             background-color:black;
-            color: blanchedalmond;
+            color:white;
+            border-radius: 1rem;
+            transition: all 0.3s;
+        }
+        .menuitem img {
+            
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 1rem;
+            transition: all 0.3s;
+        }
+
+        .overed img{
+            height: 50%;
+        }
+
+        .overed .dishTitle {
+            transform: translate(-50%, -80%);
+            
         }
 
         .centered {
@@ -72,18 +109,34 @@
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 1;
-}
+        }
 
-        .selected {
-            border: 2px solid red;
+        .description {
+            display: none;
+
+        }
+
+        .overed .description  {
+            margin-left: 1em;
+            margin-right: 1em;
+            display: block;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: smaller;
+            font-style: italic;
+            margin-top: 1em;
+            background-color: white;
+            color: black;
+            overflow: hidden;
+            
+
+
         }
         .main:hover {
             background-color: pink;
         }
         .addDishes {
-           background-color: cornsilk;
+            background-color: cornsilk;
             margin: 1em;
-
         }
         .selected {
             background-color: lightcyan;
@@ -95,21 +148,15 @@
             min-height: 2em;
         }
         .ingredientsList{
+            visibility: hidden;
             margin-left: 1em;
-           font-family: Arial, Helvetica, sans-serif;
-           font-style: italic;
-           font-size: smaller;
+            font-family: Arial, Helvetica, sans-serif;
+            font-style: italic;
+            font-size: smaller;
             position: relative;
             background-color: #f1f1f1;
             min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            
-        }
-        
-        .maincontainer{
-            margin: 0.5em;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
             
         }
 
@@ -133,11 +180,9 @@
     <body onload="">
        <div id="wrapper"> 
         <header>
-            <h1 class="title">WhatWeEater</h1>
+            <h1 class="title">Weater</h1>
         </header>
-        <nav>
-           
-        </nav>
+        
         <main>   
             <div class="container week">
                 <div class="item" style="visibility: hidden;"></div>
@@ -149,56 +194,51 @@
                 <div class="item">Saturday</div>
                 <div class="item">Sunday</div>
                 <div class="item">Lunch</div>
-                <div class="item main" id="main1" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="item main" id="main2" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="item main" id="main3" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="item main" id="main4" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="item main" id="main5" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="item main" id="main6" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="item main" id="main7" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="item main" id="main1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="item main" id="main2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="item main" id="main3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="item main" id="main4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="item main" id="main5" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="item main" id="main6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="item main" id="main7" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                 <div class="item">Dinner</div>
-                <div class="item main" id="main8" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="item main" id="main9" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="item main" id="main10" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="item main" id="main11" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="item main" id="main12" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="item main" id="main13" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="item main" id="main14" onclick="handleWeekClick(this)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                
-            
+                <div class="item main" id="main8" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="item main" id="main9" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="item main" id="main10" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="item main" id="main11" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="item main" id="main12" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="item main" id="main13" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="item main" id="main14" ondrop="drop(event)" ondragover="allowDrop(event)"></div>    
             </div>
-            <p class="infotext">Drag dishes into calendar. Click on added dishes to delete them</p>
+            <p class="infotext">Drag dishes into calendar. Click on added dishes to delete</p>
             <div class="maincontainer">
             <div class="container menu" id="menu">
-            </div>
-           
-           
+            </div>         
             </div>
             <button class="newDishBtn" onclick="openAddDishForm()">Add New Dish</button>
             <div id="AddNewDishForm">
             <form class="addDishes">
                 Dish name: <input type="text" name="item" placeholder="new dish?" required>
+                Description: <textarea name="desc"></textarea>
                 Ingredients: <input type="text" name="ingredient" placeholder="add ingredient" required>
+                image url: <input type="text" name="src" placeholder="image">
                 <button id="addIngredient">+</button>
                 <div class="ingredients" id="ingredientsToAdd"></div>
                 <button id="newDish">ADD</button>
-            
             </form>
             </div>
             <div id="shoppingListContainer">shopping list:<div id="shoppingList"></div>
             </div>
         </main>
-
         </div>  
-
-
     <script>
         var thingToDrag = "";
         var ingredientsToAdd = [];
         var ingredientsToShop = [];
         
-        let defaultDishes = [
+        const defaultDishes = [
                         {name: "Falafel",
+                        desc: "Fryed balls of Soaked cheekpeas, grounded with persil, garlic and coriander, served in a pita bread, with fresh veggies (letuce, tomato, cabbage, cucumber) topped with mint yoghurt sauce",
                         ingredients: [
                                     "cheekpeas", 
                                     "persil", 
@@ -208,6 +248,7 @@
                         image: "falafel.jpg"            
                         },
                         {name: "empanadas",
+                        desc: "Baked turnover filled with tuna, onions, potatoes and olives",
                         ingredients: [
                                     "dough", 
                                     "tuna", 
@@ -218,6 +259,7 @@
 
                         },
                         {name:"cuban rice",
+                        desc:"White rice with fried bananas, egg and susage",
                         ingredients: [
                                       "rice",
                                       "bananas",
@@ -226,6 +268,7 @@
                         image: "cuban.jpg"
                         },
                         {name:"pasta",
+                        desc: "no need for description here. Plain old italian pasata with tomato sause and cheese",
                         ingredients: [
                                       "noodles",
                                       "tomatoes",
@@ -240,9 +283,8 @@
             if (localStorage.getItem("dishes")===null){
             return defaultDishes.slice();
             }      
-            return JSON.parse(localStorage.getItem("dishes"));   
-        
-      }
+            return JSON.parse(localStorage.getItem("dishes"));
+        }
      
         function populateMenu() {
             const dishes = getDishes();         
@@ -250,27 +292,36 @@
                 var dish = d.name
                 var ings = d.ingredients;
                 var image = d.image;
+                var desc = d.desc;
                 var food = document.createElement("div");
-                food.classList.add("item");
+                food.classList.add("menuitem");
+                
                 food.innerHTML = ` 
-                        <img src=${image} alt=${dish} style=\"width: 100%; height: 100%\">
-                        <p class=\"centered\" draggable=\"true\" ondragstart=\"drag(this)\">${dish}</p>
+                        <img src=${image} alt=${dish} onmouseover=\"handleMouseOver(this)\">
+                        <p class=\"dishTitle centered\" draggable=\"true\" ondragstart=\"drag(this)\">${dish}</p>
+                        <p class=\"description\">${desc}</p>
                         <div class=\"ingredientsList\" id=\"${dish}\"></div>
                         `;
-                document.getElementById("menu").appendChild(food);
-                document.getElementById(dish).innerHTML = ings.join(", ");
-               
-                 
+                $('#menu').append(food);
+                document.getElementById(dish).innerHTML = ings.join(", ");  
                 }
-                
             );
             localStorage.setItem("dishes", JSON.stringify(dishes));
         }
+        
+        function handleMouseOver(e){
+            e.parentElement.classList.add("overed");    
+        }
+        
+        function handleMouseLeave(e){
+            e.currentTarget.classList.remove("overed");
+        }
 
         function handleWeekClick(e){
-            const content = e.textContent;
+           
+            const content = e.currentTarget.textContent;
             var dishes = JSON.parse(localStorage.getItem("dishes"));
-            var x = search(e.textContent, dishes);
+            var x = search(e.currentTarget.textContent, dishes);
             var arr = x.ingredients;
             arr.forEach((e) => {
                 for( var i = 0; i < ingredientsToShop.length; i++)
@@ -279,11 +330,10 @@
             let unique = [...new Set(ingredientsToShop)];
             document.querySelector("#shoppingList").innerHTML = unique.join(", ");
 
-        
-        if (e.innerHTML !== ""){
-            e.innerHTML = "";
+            if (e.currentTarget.textContent !== ""){
+                e.currentTarget.textContent = "";
+            }
         }
-      }
       
         function allowDrop(e) {
             e.preventDefault();
@@ -328,7 +378,9 @@
           e.preventDefault();
           let objectToadd = {
               name: (document.querySelector('[name=item]')).value,
-              ingredients:ingredientsToAdd
+              ingredients:ingredientsToAdd,
+              desc: (document.querySelector('[name=desc]')).value,
+              src: (document.querySelector('[name=src]')).value
           }    
           var dis = JSON.parse(localStorage.getItem("dishes"));
           dis.push(objectToadd);
@@ -337,15 +389,19 @@
           populateMenu();
           document.getElementById("ingredientsToAdd").innerHTML = "";
           ingredientsToAdd = [];
-        }
-        function openAddDishForm(){
-            console.log("OPENING");
-            document.getElementById("AddNewDishForm").style = "display:block; position:absolute";
+          document.getElementById("AddNewDishForm").style = "display:none";
         }
 
-        document.getElementById("addIngredient").addEventListener('click', addIngredient);
-        document.getElementById("newDish").addEventListener('click', addDish)
+        function openAddDishForm(){
+            
+            document.getElementById("AddNewDishForm").style = "display:block; position:absolute";
+        }
+        
         populateMenu();
+        $('#addIngredient').on('click', addIngredient);
+        $('#newDish').on('click', addDish); 
+        $('.menuitem').on('mouseleave', handleMouseLeave);
+        $('.main').on('click', handleWeekClick);
       
     </script>    
     </body>
