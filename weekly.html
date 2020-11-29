@@ -16,6 +16,7 @@
         #wrapper{
             display: flex;
             flex-direction: column;
+            justify-content: center;
         }
         .infotext {
             font-family: 'Open Sans', sans-serif;
@@ -40,17 +41,7 @@
             column-gap: 0.5rem;
             
         }    
-        .menu{
-            margin-left: 2em;
-            margin-right: 2em;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;    
-            row-gap: 1rem;
-            column-gap: 1rem;
-            justify-content: center;
-            
-        }
+        
         
         .item {
             position: relative;
@@ -63,23 +54,47 @@
             cursor: move;
         }
 
+        .menu{
+            margin-left: 2em;
+            margin-right: 2em;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;    
+            row-gap: 1rem;
+            column-gap: 1rem;
+            justify-content: center;
+            
+        }
+        .menu button {
+            border-style: hidden;
+            position: relative;
+            font-family: 'Amatic SC', cursive;
+            font-size: larger;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 0.3rem;
+            display: grid;
+            align-content: center;
+            justify-content: center;
+        }
+
         .menuitem {
-            max-width: 15rem;
-            min-height: 15rem;
+            max-width: 10rem;
+            min-height: 5rem;
             position: relative;
             font-family: 'Amatic SC', cursive;
             box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
             border-radius: 0.3rem;
             cursor: move;
             transition: all 0.3s;
+            overflow: hidden;
         }
 
         .menuitem .dishTitle {
-            font-size: x-large;
-            padding-left: 2rem;
-            padding-right: 2rem;
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
+            font-size: large;
+            padding-left: 1.3rem;
+            padding-right: 1.3rem;
+            padding-top: 0.3rem;
+            padding-bottom: 0.3rem;
             background-color:black;
             color:white;
             border-radius: 1rem;
@@ -100,6 +115,7 @@
 
         .overed .dishTitle {
             transform: translate(-50%, -80%);
+            padding: 0;
             
         }
 
@@ -127,17 +143,12 @@
             background-color: white;
             color: black;
             overflow: hidden;
-            
-
 
         }
         .main:hover {
             background-color: pink;
         }
-        .addDishes {
-            background-color: cornsilk;
-            margin: 1em;
-        }
+        
         .selected {
             background-color: lightcyan;
         }
@@ -166,13 +177,76 @@
             margin: 0.5em;
             
         }
-
-        #addNewDishForm{
-            display: none;
+        .newDishBtn{
+            align-items: flex-end;
+            padding: 2em;
         } 
 
-        #addNewDishForm .visible {
-            display: block;
+        .addDishes {
+            display: none;
+            max-width: 20rem;
+            max-height: 30rem;
+            background-color: cornsilk;
+            margin: 1em;
+            position: relative;
+        }
+
+        .visible { 
+            
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: small;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 2rem;
+            z-index: 1;
+            border-radius: 0.4rem;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        }
+        .visible input {
+            font-family: 'Amatic SC', cursive;
+            letter-spacing: 1px;
+            border-radius: 0.5rem;
+            padding: 0.2rem;
+            border: hidden;
+
+        }
+        .visible button{
+            border: hidden;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        }
+        .visible * {
+            margin-top: 0.3rem;
+            margin-bottom: 0.2rem;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: lighter;
+            font-size: small;
+        }
+        .visible a{
+            border: 1px, solid, black;
+            text-decoration: none;
+            border-radius: 1em;
+        }
+        .close{
+            border: 1px, solid, black;
+            margin-left: 95%;
+        }
+
+        #shoppingListContainer{
+            padding: 0.5rem;
+            margin-top: 2rem;
+            margin-left: 20%;
+            margin-right: 20%;
+            background-color: ivory;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            font-family: 'Open Sans', sans-serif;
+            font-style: italic;
+            font-size: smaller;
+
+
         }
 
 
@@ -180,7 +254,7 @@
     <body onload="">
        <div id="wrapper"> 
         <header>
-            <h1 class="title">Weater</h1>
+            <h1 class="title">WeekEat</h1>
         </header>
         
         <main>   
@@ -212,25 +286,30 @@
             </div>
             <p class="infotext">Drag dishes into calendar. Click on added dishes to delete</p>
             <div class="maincontainer">
-            <div class="container menu" id="menu">
+            <div class="menu" id="menu">
             </div>         
             </div>
-            <button class="newDishBtn" onclick="openAddDishForm()">Add New Dish</button>
-            <div id="AddNewDishForm">
+            
             <form class="addDishes">
-                Dish name: <input type="text" name="item" placeholder="new dish?" required>
+                <a href="" class="close" onclick="closeAddForm">X</a>
+                Dish name: <input type="text" name="item" placeholder="dish name" required></input>
                 Description: <textarea name="desc"></textarea>
-                Ingredients: <input type="text" name="ingredient" placeholder="add ingredient" required>
-                image url: <input type="text" name="src" placeholder="image">
+                Ingredients: <input type="text" name="ingredient" placeholder="ingredient name" required></input>
                 <button id="addIngredient">+</button>
                 <div class="ingredients" id="ingredientsToAdd"></div>
+                image url: <input type="text" name="src" placeholder="image url"></input>
+                
+                
                 <button id="newDish">ADD</button>
             </form>
-            </div>
+            
             <div id="shoppingListContainer">shopping list:<div id="shoppingList"></div>
             </div>
         </main>
-        </div>  
+        </div>
+    
+
+              
     <script>
         var thingToDrag = "";
         var ingredientsToAdd = [];
@@ -245,7 +324,7 @@
                                     "coriander", 
                                     "pita bread", 
                                     "yoghurt sauce"],
-                        image: "falafel.jpg"            
+                        image: "img/falafel.jpg"            
                         },
                         {name: "empanadas",
                         desc: "Baked turnover filled with tuna, onions, potatoes and olives",
@@ -255,7 +334,7 @@
                                     "potatoes", 
                                     "onions",
                                     "olives"],
-                        image: "empanadas.jpg"
+                        image: "img/empanadas.jpg"
 
                         },
                         {name:"cuban rice",
@@ -265,7 +344,7 @@
                                       "bananas",
                                       "eggs",
                                       "sausages"],
-                        image: "cuban.jpg"
+                        image: "img/cuban.jpg"
                         },
                         {name:"pasta",
                         desc: "no need for description here. Plain old italian pasata with tomato sause and cheese",
@@ -275,8 +354,37 @@
                                       "garlic",
                                       "cheese"
                         ],
-                        image: "noodles.jpg"
+                        image: "img/noodles.jpg"
                         },
+                        {name:"milanesas",
+                        desc:"breaded beef with potatoes",
+                        ingredients: [
+                            "beef",
+                            "bread",
+                            "eggs",
+                            "garlic",
+                            "potatoes"
+                            ],
+                        image: "img/mila.jpg"
+                        },
+                        {name:"hamburguesas",
+                        desc:"clasic hamburguer",
+                        ingredients:["pattys", "buns", "tomato", "onion", "bacon", "pckles"],
+                        image: "img/burguer.jpg"
+
+                        },
+                        {name:"baked beef",
+                        desc: "baked beef",
+                        ingredients: ["beef", "onions", "potatoes", "sweet potatoes"],
+                        image: "img/carnehorno.jpg"
+
+                        },
+                        {name: "baked chicken",
+                        desc: "good old baked chicken with potatoes",
+                        ingredients: ["chicken", "potatoes"],
+                        image: "img/parripollo.jpg"
+
+                        }
                         ];
                         
         function getDishes(){
@@ -295,7 +403,6 @@
                 var desc = d.desc;
                 var food = document.createElement("div");
                 food.classList.add("menuitem");
-                
                 food.innerHTML = ` 
                         <img src=${image} alt=${dish} onmouseover=\"handleMouseOver(this)\">
                         <p class=\"dishTitle centered\" draggable=\"true\" ondragstart=\"drag(this)\">${dish}</p>
@@ -303,9 +410,11 @@
                         <div class=\"ingredientsList\" id=\"${dish}\"></div>
                         `;
                 $('#menu').append(food);
-                document.getElementById(dish).innerHTML = ings.join(", ");  
-                }
-            );
+                document.getElementById(dish).innerHTML = ings.join(", ");
+                });
+            var btn = "<button class=\"newDishBtn\" onclick=\"openAddDishForm()\">Create Dish</button>";
+            $('#menu').append(btn);
+            $('.menuitem').on('mouseleave', handleMouseLeave);
             localStorage.setItem("dishes", JSON.stringify(dishes));
         }
         
@@ -371,32 +480,38 @@
           var ing = document.createElement("p");
           ing.innerHTML = ingredient;
           document.getElementById("ingredientsToAdd").appendChild(ing);
+          document.querySelector('[name=ingredient]').value= "";
          
         }
 
         function addDish(e){
           e.preventDefault();
+          let image = (document.querySelector('[name=src]')).value || "https://picsum.photos/200/300?random=4";
           let objectToadd = {
               name: (document.querySelector('[name=item]')).value,
               ingredients:ingredientsToAdd,
               desc: (document.querySelector('[name=desc]')).value,
-              src: (document.querySelector('[name=src]')).value
-          }    
-          var dis = JSON.parse(localStorage.getItem("dishes"));
-          dis.push(objectToadd);
-          localStorage.setItem("dishes", JSON.stringify(dis));
+              image: image
+          };   
+          var dishes = JSON.parse(localStorage.getItem("dishes"));
+          dishes.push(objectToadd);
+          localStorage.setItem("dishes", JSON.stringify(dishes));
           document.getElementById("menu").innerHTML = "";
           populateMenu();
           document.getElementById("ingredientsToAdd").innerHTML = "";
           ingredientsToAdd = [];
-          document.getElementById("AddNewDishForm").style = "display:none";
+          $('.addDishes').removeClass("visible");
+          $('.addDishes').reset();
         }
 
         function openAddDishForm(){
-            
-            document.getElementById("AddNewDishForm").style = "display:block; position:absolute";
+            $('.addDishes').addClass("visible");
         }
-        
+
+        function closeAddForm(){
+        $('.addDishes').removeClass("visible");
+        }
+
         populateMenu();
         $('#addIngredient').on('click', addIngredient);
         $('#newDish').on('click', addDish); 
