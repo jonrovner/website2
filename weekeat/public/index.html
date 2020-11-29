@@ -51,7 +51,6 @@
             display: grid;
             align-content: center;
             justify-content: center;
-            cursor: move;
         }
 
         .menu{
@@ -99,24 +98,17 @@
             color:white;
             border-radius: 1rem;
             transition: all 0.3s;
+            letter-spacing: 0.1rem;
         }
         .menuitem img {
-            
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 1rem;
             transition: all 0.3s;
         }
-
-        .overed img{
-            height: 50%;
-        }
-
         .overed .dishTitle {
             transform: translate(-50%, -80%);
-            padding: 0;
-            
         }
 
         .centered {
@@ -133,16 +125,22 @@
         }
 
         .overed .description  {
+            height: 300px;
+            width: auto;
             margin-left: 1em;
             margin-right: 1em;
+            margin-top: 1em;
             display: block;
             font-family: Arial, Helvetica, sans-serif;
             font-size: smaller;
             font-style: italic;
-            margin-top: 1em;
             background-color: white;
             color: black;
-            overflow: hidden;
+            overflow: visible;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            
 
         }
         .main:hover {
@@ -245,8 +243,6 @@
             font-family: 'Open Sans', sans-serif;
             font-style: italic;
             font-size: smaller;
-
-
         }
 
 
@@ -406,7 +402,7 @@
                 food.innerHTML = ` 
                         <img src=${image} alt=${dish} onmouseover=\"handleMouseOver(this)\">
                         <p class=\"dishTitle centered\" draggable=\"true\" ondragstart=\"drag(this)\">${dish}</p>
-                        <p class=\"description\">${desc}</p>
+                        <div class=\"description\">${desc}</div>
                         <div class=\"ingredientsList\" id=\"${dish}\"></div>
                         `;
                 $('#menu').append(food);
