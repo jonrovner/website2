@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+    <title>Week Eat</title>
 
     <!-- update the version number as needed -->
     <script defer src="/__/firebase/8.1.1/firebase-app.js"></script>
@@ -21,6 +21,7 @@
       initialize the SDK after all desired features are loaded, set useEmulator to false
       to avoid connecting the SDK to running emulators.
     -->
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Open+Sans:wght@200&display=swap" rel="stylesheet">
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -59,8 +60,7 @@ body{
             column-gap: 0.5rem;
             
         }    
-        
-        
+
         .item {
             position: relative;
             font-family: 'Amatic SC', cursive;
@@ -95,10 +95,9 @@ body{
         }
 
         .menuitem {
-            max-width: 10rem;
-            min-height: 5rem;
+            max-width: 200px;
+            max-height: 150px;
             position: relative;
-            font-family: 'Amatic SC', cursive;
             box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
             border-radius: 0.3rem;
             cursor: move;
@@ -107,14 +106,14 @@ body{
         }
 
         .menuitem .dishTitle {
-            font-size: large;
-            padding-left: 1.3rem;
-            padding-right: 1.3rem;
-            padding-top: 0.3rem;
-            padding-bottom: 0.3rem;
+            font-family: 'Amatic SC', cursive;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            padding-top: 0.1rem;
+            padding-bottom: 0.1rem;
             background-color:black;
             color:white;
-            border-radius: 1rem;
+            border-radius: 0.2rem;
             transition: all 0.3s;
             letter-spacing: 0.1rem;
         }
@@ -125,8 +124,9 @@ body{
             border-radius: 1rem;
             transition: all 0.3s;
         }
-        .overed .dishTitle {
-            transform: translate(-50%, -80%);
+
+        .overed img{
+            height: 50%;
         }
 
         .centered {
@@ -143,21 +143,13 @@ body{
         }
 
         .overed .description  {
-            height: 300px;
-            width: auto;
-            margin-left: 1em;
-            margin-right: 1em;
-            margin-top: 1em;
             display: block;
-            font-family: Arial, Helvetica, sans-serif;
             font-size: smaller;
             font-style: italic;
             background-color: white;
             color: black;
-            overflow: visible;
             position: absolute;
-            top: 50%;
-            left: 50%;
+            
             
 
         }
@@ -208,7 +200,6 @@ body{
         }
 
         .visible { 
-            
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             font-size: small;
             display: flex;
@@ -241,6 +232,7 @@ body{
             font-weight: lighter;
             font-size: small;
         }
+
         .visible a{
             border: 1px, solid, black;
             text-decoration: none;
@@ -262,18 +254,7 @@ body{
             font-style: italic;
             font-size: smaller;
         }
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
+      
     </style>
   </head>
   <body>
@@ -331,7 +312,9 @@ body{
            
            <div id="shoppingListContainer">shopping list:<div id="shoppingList"></div>
            </div>
+           
        </main>
+       <footer>(c) 2020 Jonathan Rovner</footer>
        </div>
    
 

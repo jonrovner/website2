@@ -41,8 +41,7 @@
             column-gap: 0.5rem;
             
         }    
-        
-        
+
         .item {
             position: relative;
             font-family: 'Amatic SC', cursive;
@@ -77,10 +76,9 @@
         }
 
         .menuitem {
-            max-width: 10rem;
-            min-height: 5rem;
+            max-width: 200px;
+            max-height: 150px;
             position: relative;
-            font-family: 'Amatic SC', cursive;
             box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
             border-radius: 0.3rem;
             cursor: move;
@@ -89,14 +87,14 @@
         }
 
         .menuitem .dishTitle {
-            font-size: large;
-            padding-left: 1.3rem;
-            padding-right: 1.3rem;
-            padding-top: 0.3rem;
-            padding-bottom: 0.3rem;
+            font-family: 'Amatic SC', cursive;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            padding-top: 0.1rem;
+            padding-bottom: 0.1rem;
             background-color:black;
             color:white;
-            border-radius: 1rem;
+            border-radius: 0.2rem;
             transition: all 0.3s;
             letter-spacing: 0.1rem;
         }
@@ -107,8 +105,9 @@
             border-radius: 1rem;
             transition: all 0.3s;
         }
-        .overed .dishTitle {
-            transform: translate(-50%, -80%);
+
+        .overed img{
+            height: 50%;
         }
 
         .centered {
@@ -125,21 +124,13 @@
         }
 
         .overed .description  {
-            height: 300px;
-            width: auto;
-            margin-left: 1em;
-            margin-right: 1em;
-            margin-top: 1em;
             display: block;
-            font-family: Arial, Helvetica, sans-serif;
             font-size: smaller;
             font-style: italic;
             background-color: white;
             color: black;
-            overflow: visible;
             position: absolute;
-            top: 50%;
-            left: 50%;
+            
             
 
         }
@@ -190,7 +181,6 @@
         }
 
         .visible { 
-            
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             font-size: small;
             display: flex;
@@ -223,6 +213,7 @@
             font-weight: lighter;
             font-size: small;
         }
+
         .visible a{
             border: 1px, solid, black;
             text-decoration: none;
@@ -302,13 +293,7 @@
             <div id="shoppingListContainer">shopping list:<div id="shoppingList"></div>
             </div>
         </main>
-        </div>
-    
-
-        <script src="/__/firebase/8.1.1/firebase-app.js"></script>
-        <script src="/__/firebase/8.1.1/firebase-auth.js"></script>
-        <script src="/__/firebase/8.1.1/firebase-database.js"></script>
-        <script src="/__/firebase/init.js"></script>
+    </div>
 
 
     <script>
@@ -318,7 +303,7 @@
         
         const defaultDishes = [
                         {name: "Falafel",
-                        desc: "Fryed balls of Soaked cheekpeas, grounded with persil, garlic and coriander, served in a pita bread, with fresh veggies (letuce, tomato, cabbage, cucumber) topped with mint yoghurt sauce",
+                        desc: "Fryed balls of Soaked cheekpeas in a pita bread, with fresh veggies and yoghurt sauce",
                         ingredients: [
                                     "cheekpeas", 
                                     "persil", 
