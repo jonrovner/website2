@@ -10,58 +10,23 @@
         }
         #wrapper {
             padding: 2%;
-            height: 100%;
-            background-color: black;
-            background-image: linear-gradient(rgba(47,79,79,0.3), rgba(25,25,112,0.5));
-            
-        }
-        nav{
-            margin: 1%;
-            height: 5%;
-            border: 1px solid cornflowerblue;
+            height: 100%;   
         }
         </style>
+    </head>
     <body>
        <div id="wrapper"> 
-        <header>
-
-
-        </header>
-        <nav>
-
-        </nav>
         <main>
-
+            <div id="calcu"></div>
         </main>
         <footer>
 
 
         </footer>
-    </div>   
+       </div>   
     
-    <script>
-            function findSum(){
-                var sum = 0;
-                var i;
-                for (i = 0; i < 1000; i++){
-                    
-                    if (i % 3 == 0 || i % 5 == 0) {
-                        sum = sum + i;
-                        console.log(sum)}
-                    
-                
-                }
-                return sum;
-
-
-            }
-
-            function findVowels(str){
-                return str.match(/[aeiou]/ig);
-                
-            }
-
-
+    <script>        
+            
             function getFibos(a) {
                 
                 var fib = [];
@@ -73,17 +38,7 @@
                 return fib;
             }
 
-            function addEvens(arr) {
-                var sum = 0;
-                for (i= 0; i < 32; i++){
-                    if(arr[i] % 2== 0) {
-                        console.log(arr[i]);
-                        sum = sum+arr[i];
-                    }
-                }
-
-                return sum;
-            } 
+             
             function isPrime(num) {
                 for(var i = 2; i < num; i++)
                     if(num % i === 0) return false;
@@ -104,16 +59,92 @@
              return a % b == 0;
             }
 
-
-            function aVeryBigSum(ar) {
-                var sum = 0;
-                var num = ar.lenght;
-                var i;
-                for (i = 0; i< num; i++ ){
-                    sum = sum + ar[i];
-                }
-                return sum;
-            }
     </script>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script>
+
+        class Calculator extends React.Component {
+        constructor(props){
+        super(props);
+        this.state = {
+          firstNum: 0,
+          isFisrtSet: false,
+          seccondNum: 0,
+          expression:"",
+          valueArr:[],
+          displayValue: "0"
+        }
+        this.handleNumber = this.handleNumber.bind(this);
+        this.handleOperator = this.handleOperator.bind(this);
+        this.handleDecimal = this.handleDecimal.bind(this);
+        this.evaluate = this.evaluate.bind(this);
+        
+      }
+      handleNumber(e){
+        let {displayValue} = this.state;
+        const value = e.target.innerHTML;
+        
+        this.setState({
+          displayValue: displayValue == 0
+            ? value 
+            : displayValue += value,
+          isFisrtSet: true,
+        })
+      }
+      
+      
+      handleOperator(e){
+        let {displayValue, firstNum, expression} = this.state;
+        const value = e.target.innerHTML;
+    
+        this.setState({
+          firstNum: parseInt(displayValue),
+          expression: expression + firstNum + value
+          
+        })
+        console.log(this.state)
+      }
+      handleDecimal(){
+        
+      }
+      evaluate(){
+        
+      }
+      render() {
+        return (
+            <div id="container">  
+            <div id="display">{this.state.displayValue}</div>
+            <div id="buttons" className="buttons">
+          
+                <div id="seven" onClick={this.handleNumber}>7</div>
+                <div id="eight" onClick={this.handleNumber}>8</div>
+                <div id="nine" onClick={this.handleNumber}>9</div>
+                <div id="add" onClick={this.handleOperator}>+</div>
+                <div id="four" onClick={this.handleNumber}>4</div>
+                <div id="five" onClick={this.handleNumber}>5</div>
+                <div id="six" onClick={this.handleNumber}>6</div>
+                <div id="subtract" onClick={this.handleOperator}>-</div>
+                <div id="one" onClick={this.handleNumber}>1</div>
+                <div id="two" onClick={this.handleNumber}>2</div>
+                <div id="three" onClick={this.handleNumber}>3</div>
+                <div id="multiply" onClick={this.handleOperator}>*</div>
+                <div id="clear">AC</div>
+                <div id="zero" onClick={this.handleNumber}>0</div>
+                <div id="decimal">.</div>
+                <div id="equals">=</div>
+        </div>  
+        </div>
+        )
+      }
+      
+    }
+    
+    ReactDOM.render(<Calculator />, document.getElementById('calcu'));
+    
+</script>
+
+
     </body>
 </html>
