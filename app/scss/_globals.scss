@@ -1,0 +1,63 @@
+html {
+    font-size: 100%;
+    box-sizing: border-box;
+}
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+
+header {
+    display: flex;
+}
+nav{
+    
+    border: 1px solid cornflowerblue;
+}
+
+.flex {
+    display: flex;
+
+    &-jc-sb {
+        justify-content: space-between;
+    }
+    &-jc-c {
+        justify-content: center;
+    }
+    &-ai-c{
+        align-items: center;
+
+    }
+}
+//spacing
+.container{
+    max-width: 69.375rem;
+    margin: 0 auto;
+
+    &--pall {
+        padding-top: 2.25rem;
+        padding-right: 1.5rem;
+        padding-bottom: 2.25rem;
+        padding-left: 1.5rem;
+    }
+    &--py{
+        padding-top: 2.25rem;
+        padding-bottom: 2.25rem;
+    }
+    &--px{
+        padding-right: 1.5rem;
+        padding-left: 1.5rem;
+    }
+    &--pt{
+        padding-top: 2.25rem;
+    }
+    &--pr{
+        padding-right: 1.5rem;
+    }
+    &--pl{
+        padding-left: 1.5rem;
+    }
+    &--pb{
+        padding-bottom: 2.25rem;
+    }
+}
