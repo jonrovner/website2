@@ -1,6 +1,7 @@
 html {
     font-size: 100%;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 *, *::before, *::after {
     box-sizing: inherit;
@@ -9,10 +10,40 @@ html {
 
 header {
     display: flex;
+    justify-content: space-between;
 }
-nav{
+
+main {
+    p{
+        font-style: italic;
+        font-weight: 200;
+    }
+}
+
+.skills{
+    justify-content: space-between;
     
-    border: 1px solid cornflowerblue;
+}
+.writer .art .coding {
+    background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      min-height: 17.5rem;
+      width: 30%;
+      margin-right: 2rem;
+}
+
+.writer{
+    
+    background-image: url("/img/typewriter.jpg");
+    
+}
+.art {
+    background-image: url('/img/art.jpg');
+}
+
+.coding{
+    background-image: url('/img/coding.jpg');
 }
 
 .flex {

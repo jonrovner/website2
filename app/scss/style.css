@@ -2,6 +2,7 @@ html {
   font-size: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
 *, *::before, *::after {
@@ -13,10 +14,41 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-nav {
-  border: 1px solid cornflowerblue;
+main p {
+  font-style: italic;
+  font-weight: 200;
+}
+
+.skills {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.writer .art .coding {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  min-height: 17.5rem;
+  width: 30%;
+  margin-right: 2rem;
+}
+
+.writer {
+  background-image: url("/img/typewriter.jpg");
+}
+
+.art {
+  background-image: url("/img/art.jpg");
+}
+
+.coding {
+  background-image: url("/img/coding.jpg");
 }
 
 .flex {
