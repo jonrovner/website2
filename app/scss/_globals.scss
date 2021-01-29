@@ -11,40 +11,13 @@ html {
 header {
     display: flex;
     justify-content: space-between;
-}
 
-main {
-    p{
-        font-style: italic;
+    h4{
         font-weight: 200;
     }
 }
 
-.skills{
-    justify-content: space-between;
-    
-}
-.writer .art .coding {
-    background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center center;
-      min-height: 17.5rem;
-      width: 30%;
-      margin-right: 2rem;
-}
 
-.writer{
-    
-    background-image: url("/img/typewriter.jpg");
-    
-}
-.art {
-    background-image: url('/img/art.jpg');
-}
-
-.coding{
-    background-image: url('/img/coding.jpg');
-}
 
 .flex {
     display: flex;
