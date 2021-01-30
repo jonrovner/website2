@@ -7,6 +7,7 @@ main {
 }
 
 .skills{
+    position: relative;
     flex-direction: column;
 
     a{
@@ -26,25 +27,58 @@ main {
             display: block;
             margin-left: auto;
             margin-right: auto;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.5rem;
         }
         h2 {
-            margin-top: 0.2rem;
-            padding-bottom: 0.2rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
             text-align: center;
             color: black;
         }
 
         p { 
-            margin-top: 0.2rem;
+            margin-top: 0.5rem;
             margin-bottom: 0.2rem;
             text-align: center;
             font-weight: 200;
             font-size: smaller;
         }
+
+        
     }
 
-    
+    .works {
+        width: 100%;
+        position: absolute;
+        top: 3rem;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        justify-content: center;
+        background-color: blanchedalmond;
+
+        a{
+            display: grid;
+            align-items: center;
+            justify-content: center;
+            margin: 0.75rem;
+        }
+
+        img {
+            width: 4rem;
+            align-self: center;
+        }
+        h6 {
+            text-align: center;
+            margin-top: 0.2rem;
+            margin-bottom: 0.2rem;
+        }
+    }
+
+    .hidden{
+        opacity: 0;
+    }
     
 }
 
