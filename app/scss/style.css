@@ -99,6 +99,97 @@ header h4 {
   padding-bottom: 2.25rem;
 }
 
+#memotest {
+  text-align: center;
+}
+
+#boardContainer {
+  margin-top: 2%;
+}
+
+.board {
+  display: -ms-inline-grid;
+  display: inline-grid;
+  text-align: center;
+  background-color: aliceblue;
+  height: 200px;
+  width: 200px;
+}
+
+.board8 {
+  text-align: center;
+  background-color: lightgray;
+  display: -ms-inline-grid;
+  display: inline-grid;
+  height: 100px;
+  -ms-grid-rows: 50px 50px 50px 50px;
+      grid-template-rows: 50px 50px 50px 50px;
+  -ms-grid-columns: 50px 50px 50px 50px;
+      grid-template-columns: 50px 50px 50px 50px;
+  grid-gap: 10px;
+}
+
+.board16 {
+  text-align: center;
+  background-color: lightgray;
+  display: -ms-inline-grid;
+  display: inline-grid;
+  height: 200px;
+  -ms-grid-rows: 50px 50px 50px 50px;
+      grid-template-rows: 50px 50px 50px 50px;
+  -ms-grid-columns: 50px 50px 50px 50px;
+      grid-template-columns: 50px 50px 50px 50px;
+}
+
+.board30 {
+  text-align: center;
+  background-color: lightgray;
+  display: -ms-inline-grid;
+  display: inline-grid;
+  height: 250px;
+  -ms-grid-rows: 50px 50px 50px 50px 50px;
+      grid-template-rows: 50px 50px 50px 50px 50px;
+  -ms-grid-columns: 50px 50px 50px 50px 50px 50px;
+      grid-template-columns: 50px 50px 50px 50px 50px 50px;
+}
+
+.chipback {
+  background-color: black;
+  margin: 1%;
+}
+
+.chip {
+  margin: 5%;
+  opacity: 0%;
+}
+
+.playing {
+  opacity: 100%;
+  -webkit-animation: shake 0.2s;
+          animation: shake 0.2s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+}
+
+#btn {
+  margin-top: 1%;
+}
+
+img {
+  height: 40px;
+  width: 40px;
+}
+
+.winer {
+  opacity: 100%;
+  -webkit-animation-name: test;
+          animation-name: test;
+  -webkit-animation-duration: 0.1s;
+          animation-duration: 0.1s;
+  -webkit-animation-iteration-count: 2;
+          animation-iteration-count: 2;
+}
+
 main p {
   font-style: italic;
   font-weight: 200;
