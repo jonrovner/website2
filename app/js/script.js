@@ -1,10 +1,16 @@
-const codingCard = document.querySelector('.coding');
-const codingWorks = document.querySelector('.works');
-const cardContent = document.querySelector('.cardContent');
 
- function flip(e){
-    console.log(e);
+
+
+
+ function flip() {
+    console.log("flip");
+    const codingCard = document.querySelector('.coding');
+    const codingWorks = document.querySelector('.works');
+    const cardContent = document.querySelector('.cardContent');
+    
+
     if (codingWorks.classList.contains('hidden')){
+
         codingCard.classList.add('rotate')
         cardContent.classList.add('rotate', 'hidden');
         codingWorks.classList.remove('hidden', 'rotate');

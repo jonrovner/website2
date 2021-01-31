@@ -169,6 +169,9 @@ main p {
   top: 1rem;
   -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
+}
+
+.works .worksGrid {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr;
@@ -204,6 +207,10 @@ main p {
   text-align: center;
   margin-top: 0.2rem;
   margin-bottom: 0.2rem;
+}
+
+.works .arrow {
+  margin-top: 2rem;
 }
 
 .arrow {

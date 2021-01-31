@@ -67,12 +67,14 @@ main {
     position: absolute;
     top: 1rem;
     transition: all 200ms ease-in-out;
+    
+    .worksGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     justify-content: center;
     //background-color: blanchedalmond;
-    
+    } 
 
     a{
         display: grid;
@@ -91,6 +93,9 @@ main {
         text-align: center;
         margin-top: 0.2rem;
         margin-bottom: 0.2rem;
+    }
+    .arrow{
+        margin-top: 2rem;
     }
 }
 
