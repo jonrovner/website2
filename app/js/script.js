@@ -4,17 +4,19 @@ const cardContent = document.querySelector('.cardContent');
 
 codingCard.addEventListener('click', function(){
     if (codingWorks.classList.contains('hidden')){
-        cardContent.classList.add('hidden');
-        codingWorks.classList.remove('hidden')
+        cardContent.classList.add('hidden', 'rotate');
+        codingWorks.classList.remove('hidden', 'rotate')
+        codingCard.classList.remove('rotate')
     }  else {
-        codingWorks.classList.add('hidden')
+        codingWorks.classList.add('hidden', 'rotate')
         cardContent.classList.remove('hidden')
+        codingCard.classList.add('rotate')
     }
 
 });
 
 
-
+//memotest
 
 var gameCount = 0;
 var win = 0;

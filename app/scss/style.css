@@ -194,6 +194,8 @@ main p {
   font-style: italic;
   font-weight: 200;
   text-align: center;
+  line-height: 1.3;
+  margin-top: 0.5rem;
 }
 
 .skills {
@@ -213,7 +215,9 @@ main p {
   -webkit-box-shadow: 5px 5px 5px 5px rgba(184, 176, 176, 0.5);
           box-shadow: 5px 5px 5px 5px rgba(184, 176, 176, 0.5);
   padding: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
 }
 
 .skills .card .cardImage {
@@ -233,8 +237,8 @@ main p {
 }
 
 .skills .card p {
-  margin-top: 0.5rem;
-  margin-bottom: 0.2rem;
+  margin: 1rem;
+  line-height: 1.5;
   text-align: center;
   font-weight: 200;
   font-size: smaller;
@@ -244,13 +248,17 @@ main p {
   opacity: 0;
 }
 
+.skills .rotate {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
 .works {
-  width: 80%;
+  width: 82.5%;
   position: absolute;
-  top: 3rem;
-  -webkit-transition: all 150ms ease-in-out;
-  transition: all 150ms ease-in-out;
-  z-index: 1;
+  top: 1rem;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr;
@@ -260,7 +268,6 @@ main p {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background-color: blanchedalmond;
 }
 
 .works a {
