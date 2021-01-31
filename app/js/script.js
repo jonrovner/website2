@@ -2,18 +2,23 @@ const codingCard = document.querySelector('.coding');
 const codingWorks = document.querySelector('.works');
 const cardContent = document.querySelector('.cardContent');
 
-codingCard.addEventListener('click', function(){
+ function flip(e){
+    console.log(e);
     if (codingWorks.classList.contains('hidden')){
-        cardContent.classList.add('hidden', 'rotate');
-        codingWorks.classList.remove('hidden', 'rotate')
-        codingCard.classList.remove('rotate')
-    }  else {
-        codingWorks.classList.add('hidden', 'rotate')
-        cardContent.classList.remove('hidden')
         codingCard.classList.add('rotate')
+        cardContent.classList.add('rotate', 'hidden');
+        codingWorks.classList.remove('hidden', 'rotate');
+        setTimeout(()=> codingCard.classList.remove('rotate'), 200)
+        
+    
+    }  else {
+        
+        codingWorks.classList.add('hidden', 'rotate');
+        cardContent.classList.remove('hidden');
+        codingCard.classList.add('rotate');
     }
 
-});
+}
 
 
 //memotest
