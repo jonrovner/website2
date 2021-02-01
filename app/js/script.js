@@ -2,27 +2,33 @@
 
 
 
- function flip() {
-    console.log("flip");
-    const codingCard = document.querySelector('.coding');
-    const codingWorks = document.querySelector('.works');
-    const cardContent = document.querySelector('.cardContent');
+ function flip(e) {
+    console.log(e.parentNode);
     
+    if (e.parentNode.parentNode.classList.contains('coding')){
+        
+        const card = document.querySelector('.coding');
+        const back = document.querySelector('.works');
+        const front = document.querySelector('.cardContent');
+        
+        if (back.classList.contains('hidden')){
 
-    if (codingWorks.classList.contains('hidden')){
-
-        codingCard.classList.add('rotate')
-        cardContent.classList.add('rotate', 'hidden');
-        codingWorks.classList.remove('hidden', 'rotate');
-        setTimeout(()=> codingCard.classList.remove('rotate'), 200)
+            front.classList.add('rotate');
+            card.classList.add('rotate');
+            front.classList.add('hidden');
+            back.classList.remove('hidden');
+            back.classList.add('rotate')
+        
         
     
-    }  else {
+        }  else {
         
-        codingWorks.classList.add('hidden', 'rotate');
-        cardContent.classList.remove('hidden');
-        codingCard.classList.add('rotate');
+        back.classList.add('hidden', 'rotate');
+        front.classList.remove('hidden', 'rotate');
+        card.classList.remove('rotate')
+        }
     }
+    
 
 }
 
@@ -159,6 +165,48 @@ function shuffle(array) {
               return array;
             }
 
-function playCrisCros(e){
-    console.log(e);
-}
+
+ //tictactoe
+            
+            let player = "X";
+            var playerXmoves = [];
+            var PlayerYmoves = [];
+            var winConditions = [
+                                ["1", "2", "3"],
+                                ["4", "5", "6"],
+                                ["7", "8", "9"],
+                                ["1", "4", "7"],
+                                ["2", "5", "8"],
+                                ["3", "6", "9"],
+                                ["1", "5", "9"],
+                                ["3", "5", "7"]
+                                ];
+            
+            function checkForWin(playerMoves) {
+                
+                winConditions.forEach(condition => {
+                    var check = condition.every((element) => {
+                                return playerMoves.indexOf(element) !== -1;
+                                });
+            
+                    if (check) {alert(player + " es el ganador");
+                                location.reload()};
+                    }
+                    );
+            }
+            
+            function play(e){
+                var move = e.id;
+                if (player == "X"){
+                        e.innerHTML = player;
+                        playerXmoves.push(move);
+                        checkForWin(playerXmoves);
+                        player = "O";
+                        }
+                else{
+                    e.innerHTML = player;
+                    PlayerYmoves.push(move);
+                    checkForWin(PlayerYmoves);
+                    player = "X";
+                }
+            }

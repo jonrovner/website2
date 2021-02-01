@@ -26,7 +26,7 @@
                                 <h2>Coding</h2>
                                 <img class="cardImage" src="img/coding.jpg" alt="">
                                 <p>I´m currently learning web development, focusing on responsive front-end design, data structures and design patterns, building-up on my own ideas.</p>
-                                <div class="arrow" onclick="flip()">&gt</div>
+                                <div class="arrow" onclick="flip(this)">&gt</div>
                             </div>
                             <div class="works hidden">
                                 <div class="worksGrid">
@@ -46,7 +46,7 @@
                                         <img src="img/chips/vaca.png" alt="Memotest">
                                     </a>  
                                 </div>  
-                                <button class="arrow" onclick="flip()">&gt</button>
+                                <button class="arrow" onclick="flip(this)">&gt</button>
                             </div>
                         </div>
                         
@@ -90,6 +90,27 @@
                 </div>
                 <button id="btn" onclick="startGame()">START</button>
                 </div>
+                
+                <div class="tictactoe">
+                    <h3>TA TE TI</h3>
+
+                    <div id ="tictac" class="tictac">
+                    
+                        <div class="box" id="1" onclick="play(this)"></div>
+                        <div class="box" id="2" onclick="play(this)"></div>
+                        <div class="box" id="3" onclick="play(this)"></div>
+                        <div class="box" id="4" onclick="play(this)"></div>
+                        <div class="box" id="5" onclick="play(this)"></div>
+                        <div class="box" id="6" onclick="play(this)"></div>
+                        <div class="box" id="7" onclick="play(this)"></div>
+                        <div class="box" id="8" onclick="play(this)"></div>
+                        <div class="box" id="9" onclick="play(this)"></div>
+                    
+                    </div>
+
+
+
+
             </main>
             <footer>
                 <div class="copy">
