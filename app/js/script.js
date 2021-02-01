@@ -1,15 +1,36 @@
+const fronts = document.querySelectorAll('.cardContent');
+const backs = document.querySelectorAll('.works');
 
 
+function writerFlip(e) {
+    const card = e.parentNode.parentNode;
+    const front = fronts[1];
+    const back = backs[1];
+    console.log(card, front, back);
+    if (back.classList.contains('hidden')){
 
+        front.classList.add('rotate');
+        card.classList.add('rotate');
+        front.classList.add('hidden');
+        back.classList.remove('hidden');
+        back.classList.add('rotate');
+        back.classList.remove('invisible')
 
- function flip(e) {
-    console.log(e.parentNode);
+    }  else {
     
-    if (e.parentNode.parentNode.classList.contains('coding')){
-        
-        const card = document.querySelector('.coding');
-        const back = document.querySelector('.works');
-        const front = document.querySelector('.cardContent');
+    back.classList.add('hidden', 'rotate');
+    front.classList.remove('hidden', 'rotate');
+    card.classList.remove('rotate')
+    }
+
+   
+}
+
+function flip(e) {
+    
+    const card = e.parentNode.parentNode;
+    const back = backs[0];
+    const front = fronts[0];
         
         if (back.classList.contains('hidden')){
 
@@ -17,9 +38,8 @@
             card.classList.add('rotate');
             front.classList.add('hidden');
             back.classList.remove('hidden');
-            back.classList.add('rotate')
-        
-        
+            back.classList.add('rotate');
+            back.classList.remove('invisible')
     
         }  else {
         
@@ -27,7 +47,7 @@
         front.classList.remove('hidden', 'rotate');
         card.classList.remove('rotate')
         }
-    }
+   
     
 
 }

@@ -19,7 +19,7 @@ main {
     }
 
     .card {
-        
+        display: block;
         box-shadow: 5px 5px 5px 5px rgba(184, 176, 176, 0.5);
         padding: 0.5rem;
         margin-bottom: 1.5rem;
@@ -56,6 +56,7 @@ main {
 }
 
 .works {
+    
     width: 82.5%;
     position: absolute;
     top: 1rem;
@@ -92,14 +93,35 @@ main {
     }
 }
 
+.writer .works {
+    
+    top: 2rem;
+
+    .arrow{
+        margin-top: 1rem;
+
+    }
+    img{
+        width: 6rem;
+        height: 7rem;
+    }
+}
+
 .hidden{
     opacity: 0;
     
+
+}
+
+.invisible{
+    visibility: hidden;
 }
 
 .rotate {
     transform: rotateY(180deg);
 }
+
+
 .arrow {
     font-size: large;
     text-align: center;

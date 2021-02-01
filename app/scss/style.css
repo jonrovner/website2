@@ -121,6 +121,7 @@ main p {
 }
 
 .skills .card {
+  display: block;
   -webkit-box-shadow: 5px 5px 5px 5px rgba(184, 176, 176, 0.5);
           box-shadow: 5px 5px 5px 5px rgba(184, 176, 176, 0.5);
   padding: 0.5rem;
@@ -204,8 +205,25 @@ main p {
   margin-top: 4rem;
 }
 
+.writer .works {
+  top: 2rem;
+}
+
+.writer .works .arrow {
+  margin-top: 1rem;
+}
+
+.writer .works img {
+  width: 6rem;
+  height: 7rem;
+}
+
 .hidden {
   opacity: 0;
+}
+
+.invisible {
+  visibility: hidden;
 }
 
 .rotate {
