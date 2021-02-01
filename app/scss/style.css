@@ -316,6 +316,10 @@ img {
           animation-iteration-count: 2;
 }
 
+.tictactoe {
+  text-align: center;
+}
+
 .tictac {
   text-align: center;
   display: -ms-inline-grid;
