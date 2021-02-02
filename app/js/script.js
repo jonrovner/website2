@@ -52,6 +52,12 @@ function flip(e) {
 
 }
 
+function magnify(e){
+    console.log(e);
+    e.classList.add('magnify')
+    console.log(e);
+}
+
 
 //memotest
 
