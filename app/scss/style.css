@@ -245,10 +245,13 @@ main p {
 }
 
 .magnify {
-  -webkit-transform: scale(3);
-          transform: scale(3);
   text-align: center;
-  background-color: red;
+  background-color: #4c00ff;
+}
+
+.magnify img {
+  -webkit-transform: translate(3rem, 3rem) scale(2.7);
+          transform: translate(3rem, 3rem) scale(2.7);
 }
 
 #memotest {

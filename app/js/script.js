@@ -18,9 +18,10 @@ function writerFlip(e) {
 
     }  else {
     
-    back.classList.add('hidden', 'rotate');
+    back.classList.add('hidden', 'rotate', 'invisible');
     front.classList.remove('hidden', 'rotate');
-    card.classList.remove('rotate')
+    card.classList.remove('rotate');
+    back.classList.add('invisible')
     }
 
    

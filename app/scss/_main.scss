@@ -136,8 +136,12 @@ main {
 }
 
 .magnify {
-    transform:scale(3);
+    img{
+        transform: translate(3rem, 3rem) scale(2.7);
+
+    }
+    
     
     text-align: center;
-    background-color: red;
+    background-color: rgb(76, 0, 255);
 }
