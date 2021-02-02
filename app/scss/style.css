@@ -164,6 +164,7 @@ main p {
 }
 
 .works .worksGrid {
+  position: relative;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr;
@@ -173,6 +174,7 @@ main p {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  background-color: blanchedalmond;
 }
 
 .works a {
@@ -224,6 +226,7 @@ main p {
 
 .invisible {
   visibility: hidden;
+  display: none;
 }
 
 .rotate {

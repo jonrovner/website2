@@ -1,12 +1,10 @@
 
-
-
 function flip(e) {
     const fronts = document.querySelectorAll('.cardContent');
     const backs = document.querySelectorAll('.works');
+    const card = e.parentNode.parentNode;
     var front = "";
     var back = "";
-    const card = e.parentNode.parentNode;
     
     
     if (card.classList.contains('coding')) {
@@ -46,6 +44,19 @@ function magnify(e){
     
 }
 
+function openGame(e){
+    
+    var game = e.classList[1];
+    const gridItems = document.querySelectorAll('.workGridItem');
+    
+    gridItems.forEach(element => element.classList.add('invisible'));
+    e.classList.remove('invisible');
+    console.log(e);
+    e.children[0].classList.add('hidden', 'invisible');
+    e.children[1].classList.add('hidden', 'invisible');
+    e.children[2].classList.remove('hidden', 'invisible');
+
+}
 
 //memotest
 

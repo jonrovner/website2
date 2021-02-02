@@ -32,21 +32,41 @@
                         </div>
                         <div class="works hidden invisible">
                             <div class="worksGrid">
-                                <a href="#"><h6>Memotest</h6>
+                                <div class="workGridItem memotest" onclick="openGame(this)">
+                                    <h6>Memotest</h6>
                                     <img src="img/chips/geck.png" alt="Memotest">
-                                </a> 
-                                <a href="#">
+                                    <div id="memotest" class="hidden invisible">
+                                        <h3>Memotest</h3>
+                                           
+                                            <select name="boardSelection" id="boardSelection">
+                                                <option value = "8">baby</option>
+                                                <option value = "16">kid</option>
+                                                <option value= "30">ninja</option>
+                                            </select>
+                                            
+                                            
+                                        
+                                        <div id="boardContainer">
+                                        <div class="board" id="board"></div>
+                                        </div>
+                                        <button id="btn" onclick="startGame()">START</button>
+                                        </div>
+                                </div> 
+                                
+                                <div class="workGridItem tictactoe">
                                     <h6>Tictactoe</h6>
                                     <img src="img/chips/ave.png" alt="Memotest">
-                                </a> 
-                                <a href="#">
+                                </div> 
+                                
+                                <div class="workGridItem todo">
                                     <h6>To-do</h6>
                                     <img src="img/chips/gato.png" alt="Memotest">
-                                </a> 
-                                <a href="#">
+                                </div> 
+                                
+                                <div class="workGridItem weekly">
                                     <h6>Weekly</h6>
                                     <img src="img/chips/vaca.png" alt="Memotest">
-                                </a>  
+                                </div>  
                             </div>  
                             <div class="arrow" onclick="flip(this)">&gt</div>
                         </div>
@@ -98,22 +118,7 @@
                     
                         
             </div>
-            <div id="memotest">
-                <h3>Memotest</h3>
-                   
-                    <select name="boardSelection" id="boardSelection">
-                        <option value = "8">baby</option>
-                        <option value = "16">kid</option>
-                        <option value= "30">ninja</option>
-                    </select>
-                    
-                    
-                
-                <div id="boardContainer">
-                <div class="board" id="board"></div>
-                </div>
-                <button id="btn" onclick="startGame()">START</button>
-                </div>
+            
 
             <div class="tictactoe">
                     <h3>TA TE TI</h3>
