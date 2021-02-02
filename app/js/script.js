@@ -1,9 +1,9 @@
-const fronts = document.querySelectorAll('.cardContent');
-const backs = document.querySelectorAll('.works');
+
 
 
 function flip(e) {
-
+    const fronts = document.querySelectorAll('.cardContent');
+    const backs = document.querySelectorAll('.works');
     var front = "";
     var back = "";
     const card = e.parentNode.parentNode;
@@ -41,9 +41,9 @@ function flip(e) {
 
 
 function magnify(e){
-    console.log(e);
+
     e.classList.add('magnify')
-    console.log(e);
+    
 }
 
 
