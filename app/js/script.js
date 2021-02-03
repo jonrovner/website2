@@ -52,7 +52,10 @@ function openGame(e){
     console.log(gameElement);
 
    }
-
+function closeGame(){
+    const overlay = document.querySelector('.overlay');
+    overlay.classList.add('invisible');
+}
 //memotest
 
 var gameCount = 0;

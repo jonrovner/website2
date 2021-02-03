@@ -99,6 +99,10 @@ header h4 {
   padding-bottom: 2.25rem;
 }
 
+main {
+  position: relative;
+}
+
 main p {
   font-style: italic;
   font-weight: 300;
@@ -108,7 +112,12 @@ main p {
 }
 
 .overlay {
+  position: absolute;
   background-color: grey;
+  top: 8rem;
+  left: 0rem;
+  z-index: 1;
+  width: 100vw;
   min-height: 100vh;
 }
 

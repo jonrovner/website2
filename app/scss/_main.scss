@@ -1,4 +1,5 @@
 main {
+    position: relative;
     p {
         font-style: italic;
         font-weight: 300;
@@ -9,8 +10,13 @@ main {
 }
 
 .overlay{
-    background-color: grey;
     
+    position: absolute;
+    background-color: grey;
+    top: 8rem;
+    left: 0rem;
+    z-index: 1;
+    width: 100vw;
     min-height: 100vh;
 }
 
