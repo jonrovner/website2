@@ -78,3 +78,14 @@ header {
     }
 }
 
+.hidden{
+    opacity: 0;
+}
+
+.invisible{
+    visibility: hidden;
+    display: none;
+}
+.rotate {
+    transform: rotateY(180deg);
+}

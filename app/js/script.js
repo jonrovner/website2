@@ -45,11 +45,12 @@ function magnify(e){
 }
 
 function openGame(e){
+        const overlay = document.querySelector('.overlay');
+        overlay.classList.remove('invisible');  
     
-    const overlay = document.querySelector('.overlay');
-    overlay.classList.remove('invisible');  
-    const gameElement = overlay.children.item(e.id);
-    console.log(gameElement);
+        const gameElement = overlay.children.item(e.id);
+        gameElement.classList.remove('hidden', 'invisible');
+        console.log(gameElement);
 
    }
 function closeGame(){

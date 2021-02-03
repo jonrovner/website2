@@ -99,6 +99,20 @@ header h4 {
   padding-bottom: 2.25rem;
 }
 
+.hidden {
+  opacity: 0;
+}
+
+.invisible {
+  visibility: hidden;
+  display: none;
+}
+
+.rotate {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
 main {
   position: relative;
 }
@@ -115,9 +129,9 @@ main p {
   position: absolute;
   background-color: grey;
   top: 8rem;
-  left: 0rem;
+  left: 5%;
   z-index: 1;
-  width: 100vw;
+  width: 90%;
   min-height: 100vh;
 }
 
@@ -189,7 +203,6 @@ main p {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: blanchedalmond;
 }
 
 .works .worksGrid .workGridItem {
@@ -253,15 +266,6 @@ main p {
   margin-bottom: 1rem;
   -webkit-box-shadow: 2px 2px 1px 2px rgba(184, 176, 176, 0.5);
           box-shadow: 2px 2px 1px 2px rgba(184, 176, 176, 0.5);
-}
-
-.hidden {
-  opacity: 0;
-}
-
-.invisible {
-  visibility: hidden;
-  display: none;
 }
 
 .rotate {
