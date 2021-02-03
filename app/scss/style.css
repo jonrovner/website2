@@ -115,12 +115,7 @@ main p {
           flex-direction: column;
 }
 
-.skills a {
-  text-decoration: none;
-  margin-bottom: 3rem;
-}
-
-.skills .card {
+.card {
   display: block;
   -webkit-box-shadow: 5px 5px 5px 5px rgba(184, 176, 176, 0.5);
           box-shadow: 5px 5px 5px 5px rgba(184, 176, 176, 0.5);
@@ -130,7 +125,22 @@ main p {
   transition: all 200ms ease-in-out;
 }
 
-.skills .card .cardImage {
+.card h2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  color: black;
+}
+
+.card p {
+  margin: 1rem;
+  line-height: 1.5;
+  text-align: center;
+  font-weight: 300;
+  font-size: smaller;
+}
+
+.cardImage {
   width: 100%;
   height: 10rem;
   display: block;
@@ -140,25 +150,11 @@ main p {
   margin-bottom: 0.5rem;
 }
 
-.skills .card h2 {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  text-align: center;
-  color: black;
-}
-
-.skills .card p {
-  margin: 1rem;
-  line-height: 1.5;
-  text-align: center;
-  font-weight: 300;
-  font-size: smaller;
-}
-
 .works {
   width: 82.5%;
   position: absolute;
   top: 1rem;
+  left: 1rem;
   -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
 }
@@ -167,6 +163,8 @@ main p {
   position: relative;
   display: -ms-grid;
   display: grid;
+  height: 18rem;
+  left: -1rem;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
   -ms-grid-rows: 1fr 1fr;
@@ -174,10 +172,13 @@ main p {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: blanchedalmond;
 }
 
-.works a {
+.works .worksGrid a {
   display: -ms-grid;
   display: grid;
   -webkit-box-align: center;
@@ -189,7 +190,7 @@ main p {
   margin: 0.75rem;
 }
 
-.works img {
+.works .worksGrid .workImage {
   width: 4rem;
   height: 4rem;
   -ms-flex-item-align: center;
@@ -197,27 +198,27 @@ main p {
       align-self: center;
 }
 
-.works h6 {
+.works .worksGrid h6 {
   text-align: center;
   margin-top: 0.2rem;
   margin-bottom: 0.2rem;
 }
 
-.works .arrow {
+.works .worksGrid .arrow {
   margin-top: 4rem;
 }
 
-.writer .works {
-  top: 2rem;
-}
-
-.writer .works .arrow {
-  margin-top: 1rem;
-}
-
-.writer .works img {
-  width: 6rem;
-  height: 7rem;
+.arrow {
+  font-size: large;
+  text-align: center;
+  background-color: black;
+  border-radius: 1rem;
+  color: white;
+  width: 10%;
+  margin-left: 80%;
+  margin-bottom: 1rem;
+  -webkit-box-shadow: 2px 2px 1px 2px rgba(184, 176, 176, 0.5);
+          box-shadow: 2px 2px 1px 2px rgba(184, 176, 176, 0.5);
 }
 
 .hidden {
@@ -234,85 +235,76 @@ main p {
           transform: rotateY(180deg);
 }
 
-.arrow {
-  font-size: large;
-  text-align: center;
-  background-color: black;
-  border-radius: 1rem;
-  color: white;
-  width: 10%;
-  margin-left: 80%;
-  margin-bottom: 1rem;
-  -webkit-box-shadow: 2px 2px 1px 2px rgba(184, 176, 176, 0.5);
-          box-shadow: 2px 2px 1px 2px rgba(184, 176, 176, 0.5);
-}
-
-.magnify {
-  text-align: center;
-  background-color: #4c00ff;
-}
-
 .magnify img {
   -webkit-transform: translate(3rem, 3rem) scale(2.7);
           transform: translate(3rem, 3rem) scale(2.7);
 }
 
 #memotest {
+  width: 90%;
+  margin: auto;
   text-align: center;
+}
+
+#memotest h3 {
+  margin: 0.5rem;
+  padding: 0.5rem;
 }
 
 #boardContainer {
   margin-top: 2%;
 }
 
+.expanded {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
 .board {
   display: -ms-inline-grid;
   display: inline-grid;
   text-align: center;
-  background-color: aliceblue;
-  height: 20rem;
-  width: 20rem;
 }
 
 .board8 {
   text-align: center;
-  background-color: lightgray;
   display: -ms-inline-grid;
   display: inline-grid;
-  height: 100px;
   -ms-grid-rows: (1fr)[2];
       grid-template-rows: repeat(2, 1fr);
   -ms-grid-columns: (1fr)[4];
       grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
 }
 
 .board16 {
   text-align: center;
-  background-color: lightgray;
   display: -ms-inline-grid;
   display: inline-grid;
-  height: 200px;
   -ms-grid-rows: (1fr)[4];
       grid-template-rows: repeat(4, 1fr);
   -ms-grid-columns: (1fr)[4];
       grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
 }
 
 .board30 {
   text-align: center;
-  background-color: lightgray;
   display: -ms-inline-grid;
   display: inline-grid;
-  height: 250px;
   -ms-grid-rows: (1fr)[5];
       grid-template-rows: repeat(5, 1fr);
   -ms-grid-columns: (1fr)[6];
       grid-template-columns: repeat(6, 1fr);
+  gap: 0.5rem;
 }
 
 .chipback {
   background-color: black;
   margin: 1%;
+  width: 1.75rem;
+  height: 1.75rem;
 }
 
 .chip {
@@ -333,8 +325,8 @@ main p {
 }
 
 img {
-  height: 40px;
-  width: 40px;
+  height: 1.75rem;
+  width: 1.75rem;
 }
 
 .winer {

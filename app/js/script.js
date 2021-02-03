@@ -55,6 +55,7 @@ function openGame(e){
     e.children[0].classList.add('hidden', 'invisible');
     e.children[1].classList.add('hidden', 'invisible');
     e.children[2].classList.remove('hidden', 'invisible');
+    e.classList.add('expanded');
 
 }
 

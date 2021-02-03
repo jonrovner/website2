@@ -1,46 +1,56 @@
 #memotest {
+    width: 90%;
+    margin: auto;
     text-align: center;
+    h3{
+        margin: 0.5rem;
+        padding: 0.5rem;
+    }
 }
 #boardContainer {
     margin-top: 2%;
 }
+
+
+.expanded {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem;
+}
+
 .board {
     display: inline-grid;
     text-align: center;
-    background-color: aliceblue;
-    height: 20rem;
-    width: 20rem;
+    
 }
 .board8{
     text-align: center;
-    background-color: lightgray;
     display: inline-grid;
-    height: 100px;
     grid-template-rows: repeat(2, 1fr);
-    grid-template-columns: repeat(4, 1fr)
-    //gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
 }
 
 .board16{   
     text-align: center;
-    background-color: lightgray;
     display: inline-grid;
-    height: 200px;
     grid-template-rows: repeat(4, 1fr);
     grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
 }
 .board30{
     text-align: center;
-    background-color: lightgray;
     display: inline-grid;
-    height: 250px;
     grid-template-rows: repeat(5, 1fr);
     grid-template-columns: repeat(6, 1fr);
+    gap: 0.5rem;
     
 }
 .chipback {
     background-color: black;
     margin: 1%;
+    width: 1.75rem;
+    height: 1.75rem;
     
 }
 .chip{
@@ -57,8 +67,8 @@
 }
 
 img {
-    height: 40px;
-    width: 40px;
+    height: 1.75rem;
+    width: 1.75rem;
 }
 .winer {
     opacity: 100%;

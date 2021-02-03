@@ -9,31 +9,16 @@ main {
 }
 
 .skills{
-    
     position: relative;
     flex-direction: column;
-
-    a {
-        text-decoration: none;
-        margin-bottom: 3rem;
-    }
-
-    .card {
+}
+    
+.card {
         display: block;
         box-shadow: 5px 5px 5px 5px rgba(184, 176, 176, 0.5);
         padding: 0.5rem;
         margin-bottom: 1.5rem;
         transition: all 200ms ease-in-out;
-        
-        .cardImage {
-            width: 100%;
-            height: 10rem;
-            display: block;
-            margin-top: 1rem;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 0.5rem;
-        }
 
         h2 {
             margin-top: 0.5rem;
@@ -48,28 +33,49 @@ main {
             text-align: center;
             font-weight: 300;
             font-size: smaller;
-        }
-        
-    }
+        }        
 
-    
 }
+        
+        
+.cardImage {
+            width: 100%;
+            height: 10rem;
+            display: block;
+            margin-top: 1rem;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 0.5rem;
+        }
+
 
 .works {
     
     width: 82.5%;
     position: absolute;
     top: 1rem;
+    left: 1rem;
     transition: all 200ms ease-in-out;
     
     .worksGrid {
-        position: relative;
+    position: relative;
     display: grid;
+    height: 18rem;
+    left: -1rem;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     justify-content: center;
+    align-items: center;
     background-color: blanchedalmond;
-    } 
+
+    .workGridItem {
+        
+        
+        img {
+            
+        
+        } 
+    }
 
     a {
         display: grid;
@@ -78,7 +84,7 @@ main {
         margin: 0.75rem;
     }
 
-    img {
+    .workImage {
         width: 4rem;
         height: 4rem;
         align-self: center;
@@ -89,39 +95,13 @@ main {
         margin-top: 0.2rem;
         margin-bottom: 0.2rem;
     }
+
     .arrow{
         margin-top: 4rem;
     }
 }
 
-.writer .works {
-    
-    top: 2rem;
-
-    .arrow{
-        margin-top: 1rem;
-
-    }
-    img{
-        width: 6rem;
-        height: 7rem;
-    }
 }
-
-.hidden{
-    opacity: 0;
-}
-
-.invisible{
-    visibility: hidden;
-    display: none;
-}
-
-.rotate {
-    transform: rotateY(180deg);
-}
-
-
 .arrow {
     font-size: large;
     text-align: center;
@@ -134,14 +114,21 @@ main {
     box-shadow: 2px 2px 1px 2px rgba(184, 176, 176, 0.5);;
 
 }
+.hidden{
+    opacity: 0;
+}
 
+.invisible{
+    visibility: hidden;
+    display: none;
+}
+
+.rotate {
+    transform: rotateY(180deg);
+}
 .magnify {
-    img{
+    img {
         transform: translate(3rem, 3rem) scale(2.7);
 
     }
-    
-    
-    text-align: center;
-    background-color: rgb(76, 0, 255);
 }
