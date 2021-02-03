@@ -19,6 +19,44 @@
             </header>
         
             <main>
+                <div class="overlay invisible">
+                    
+                    <div class="memotest">
+                        <h3>Memotest</h3>
+                           
+                            <select name="boardSelection" id="boardSelection" onchange="startGame()">
+                                <option value = "8">baby</option>
+                                <option value = "16">kid</option>
+                                <option value= "30">ninja</option>
+                            </select>
+                            
+                        <div id="boardContainer">
+                        <div class="board" id="board"></div>
+                        </div>
+                        <button id="btn" onclick="startGame()">reset</button>
+                        </div>
+                
+        
+                    <div class="tictactoe" id="2">
+                            <h3>TA TE TI</h3>
+        
+                            <div id ="tictac" class="tictac">
+                            
+                                <div class="box" id="1" onclick="play(this)"></div>
+                                <div class="box" id="2" onclick="play(this)"></div>
+                                <div class="box" id="3" onclick="play(this)"></div>
+                                <div class="box" id="4" onclick="play(this)"></div>
+                                <div class="box" id="5" onclick="play(this)"></div>
+                                <div class="box" id="6" onclick="play(this)"></div>
+                                <div class="box" id="7" onclick="play(this)"></div>
+                                <div class="box" id="8" onclick="play(this)"></div>
+                                <div class="box" id="9" onclick="play(this)"></div>
+                            
+                            </div>
+        
+                    </div>
+
+                </div>
                 <p class="container--pall">I´m a junior web developer, senior writer and amateur artist, based in Argentina. Here´s a collection of my works and projects:</p>
                 
                 <div class="skills flex flex-jc-c container--px">
@@ -32,28 +70,13 @@
                         </div>
                         <div class="works hidden invisible">
                             <div class="worksGrid">
-                                <div class="workGridItem memotest" onclick="openGame(this)">
+                                <div class="workGridItem memotest" id="0" onclick="openGame(this)">
                                     <h6>Memotest</h6>
                                     <img class="workImage" src="img/chips/geck.png" alt="Memotest">
-                                    <div id="memotest" class="hidden invisible">
-                                        <h3>Memotest</h3>
-                                           
-                                            <select name="boardSelection" id="boardSelection">
-                                                <option value = "8">baby</option>
-                                                <option value = "16">kid</option>
-                                                <option value= "30">ninja</option>
-                                            </select>
-                                            
-                                            
-                                        
-                                        <div id="boardContainer">
-                                        <div class="board" id="board"></div>
-                                        </div>
-                                        <button id="btn" onclick="startGame()">START</button>
-                                        </div>
+                                    
                                 </div> 
                                 
-                                <div class="workGridItem tictactoe">
+                                <div class="workGridItem tictactoe" id="1" onclick="openGame(this)">
                                     <h6>Tictactoe</h6>
                                     <img class="workImage" src="img/chips/ave.png" alt="Tictactoe">
                                 </div> 
@@ -104,8 +127,8 @@
                             <div class="arrow" onclick="flip(this)">&gt</div>
                         </div>
                     </div>
-                
-                
+
+                    
                     <div class="card art">
                         <div class="cardContent">
                             <a href="">    
@@ -119,25 +142,6 @@
                         
             </div>
             
-
-            <div class="tictactoe">
-                    <h3>TA TE TI</h3>
-
-                    <div id ="tictac" class="tictac">
-                    
-                        <div class="box" id="1" onclick="play(this)"></div>
-                        <div class="box" id="2" onclick="play(this)"></div>
-                        <div class="box" id="3" onclick="play(this)"></div>
-                        <div class="box" id="4" onclick="play(this)"></div>
-                        <div class="box" id="5" onclick="play(this)"></div>
-                        <div class="box" id="6" onclick="play(this)"></div>
-                        <div class="box" id="7" onclick="play(this)"></div>
-                        <div class="box" id="8" onclick="play(this)"></div>
-                        <div class="box" id="9" onclick="play(this)"></div>
-                    
-                    </div>
-
-            </div>
 
 
             </main>

@@ -46,18 +46,12 @@ function magnify(e){
 
 function openGame(e){
     
-    var game = e.classList[1];
-    const gridItems = document.querySelectorAll('.workGridItem');
-    
-    gridItems.forEach(element => element.classList.add('invisible'));
-    e.classList.remove('invisible');
-    console.log(e);
-    e.children[0].classList.add('hidden', 'invisible');
-    e.children[1].classList.add('hidden', 'invisible');
-    e.children[2].classList.remove('hidden', 'invisible');
-    e.classList.add('expanded');
+    const overlay = document.querySelector('.overlay');
+    overlay.classList.remove('invisible');  
+    const gameElement = overlay.children.item(e.id);
+    console.log(gameElement);
 
-}
+   }
 
 //memotest
 

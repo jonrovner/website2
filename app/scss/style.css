@@ -107,6 +107,11 @@ main p {
   margin-top: 0.5rem;
 }
 
+.overlay {
+  background-color: grey;
+  min-height: 100vh;
+}
+
 .skills {
   position: relative;
   -webkit-box-orient: vertical;
@@ -178,6 +183,26 @@ main p {
   background-color: blanchedalmond;
 }
 
+.works .worksGrid .workGridItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.works .worksGrid .workGridItem h3 {
+  margin: 0.2rem;
+}
+
 .works .worksGrid a {
   display: -ms-grid;
   display: grid;
@@ -240,15 +265,14 @@ main p {
           transform: translate(3rem, 3rem) scale(2.7);
 }
 
-#memotest {
-  width: 90%;
-  margin: auto;
+.memotest {
   text-align: center;
 }
 
-#memotest h3 {
-  margin: 0.5rem;
-  padding: 0.5rem;
+.memotest h3 {
+  margin-top: 0;
+  padding-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 #boardContainer {
@@ -259,6 +283,10 @@ main p {
   width: 100%;
   padding: 0.5rem;
   margin: 0.5rem;
+}
+
+#boardSelection {
+  margin-bottom: 0.5rem;
 }
 
 .board {
@@ -307,6 +335,11 @@ main p {
   height: 1.75rem;
 }
 
+.chipback img {
+  height: 1.75rem;
+  width: 1.75rem;
+}
+
 .chip {
   margin: 5%;
   opacity: 0%;
@@ -321,12 +354,7 @@ main p {
 }
 
 #btn {
-  margin-top: 1%;
-}
-
-img {
-  height: 1.75rem;
-  width: 1.75rem;
+  margin-top: 1rem;
 }
 
 .winer {
