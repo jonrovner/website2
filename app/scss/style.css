@@ -187,6 +187,11 @@ main p {
   transition: all 200ms ease-in-out;
 }
 
+.works .workThumb img {
+  width: 6rem;
+  height: 6rem;
+}
+
 .works .worksGrid {
   position: relative;
   display: -ms-grid;

@@ -69,6 +69,10 @@ main {
     left: 1rem;
     transition: all 200ms ease-in-out;
     
+    .workThumb img {
+        width: 6rem;
+        height: 6rem;
+    }
     .worksGrid {
     position: relative;
     display: grid;
