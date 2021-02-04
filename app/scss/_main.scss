@@ -21,8 +21,19 @@ main {
 }
 
 .skills{
+    padding: 1rem;
     position: relative;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+
+    @include breakpoint-up(medium){
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+
+    }
 }
     
 .card {
