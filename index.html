@@ -9,41 +9,38 @@
         <link rel="stylesheet" href="app/scss/style.css">
      </head>   
     <body>
-       <div class=""> 
+       
             <header>
+                
                 <h3>Jonathan Rovner´s Portfolio</h2>
                 
-                <h4>contact</h4>
-
+                <h4>Hire me!</h4>
 
             </header>
         
             <main>
-                <div class="overlay invisible">
-                    
+                <section class="hero">
+                
+                </section> 
+                
+                <section class="workExamples">
+                    <div class="overlay invisible">
                     <div class="memotest hidden invisible">
                         <h3>Memotest</h3>
-                           
-                            <select name="boardSelection" id="boardSelection" onchange="startGame()">
-                                <option value = "8">baby</option>
-                                <option value = "16">kid</option>
-                                <option value= "30">ninja</option>
-                            </select>
-                            
+                        <select name="boardSelection" id="boardSelection" onchange="startGame()">
+                            <option value = "8">baby</option>
+                            <option value = "16">kid</option>
+                            <option value= "30">ninja</option>
+                        </select>    
                         <div id="boardContainer">
                         <div class="board" id="board"></div>
                         </div>
                         <button id="btn" onclick="startGame()">reset</button>
                         <div class="close" onclick="closeGame()">X</div>
                     </div>
-                        
-                
-        
                     <div class="tictactoe hidden invisible" id="2">
                             <h3>TA TE TI</h3>
-        
                             <div id ="tictac" class="tictac">
-                            
                                 <div class="box" id="1" onclick="play(this)"></div>
                                 <div class="box" id="2" onclick="play(this)"></div>
                                 <div class="box" id="3" onclick="play(this)"></div>
@@ -53,16 +50,15 @@
                                 <div class="box" id="7" onclick="play(this)"></div>
                                 <div class="box" id="8" onclick="play(this)"></div>
                                 <div class="box" id="9" onclick="play(this)"></div>
-                            
                             </div>
                             <div class="close" onclick="closeGame()">X</div>
         
                     </div>
 
-                </div>
-                <p class="container--pall">I´m a junior web developer, senior writer and amateur artist, based in Argentina. Here´s a collection of my works and projects:</p>
+                    </div> 
+                    <p class="container--pall">I´m a junior web developer, senior writer and amateur artist, based in Argentina. Here´s a collection of my works and projects:</p>
                 
-                <div class="skills">
+                    <div class="skills">
                     
                     <div class="card coding">
                         <div class="cardContent">
@@ -167,10 +163,10 @@
                     </div>
                     
                         
-            </div>
+                </div>
             
 
-
+            </section>
             </main>
             <footer>
                 <div class="copy">
@@ -178,7 +174,7 @@
                 </div>
 
             </footer>
-        </div>    
+           
         <script src="app/js/script.js"></script>   
     </body>
 </html>

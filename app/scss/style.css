@@ -137,6 +137,8 @@ main p {
 
 .skills {
   padding: 1rem;
+  margin: auto;
+  max-width: 1024px;
   position: relative;
   display: -ms-grid;
   display: grid;

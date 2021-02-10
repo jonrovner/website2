@@ -59,19 +59,19 @@ function closeGame(){
 }
 //memotest
 
-var gameCount = 0;
-var win = 0;
-var winGoal = 0;
-var clickCount = 0;  
-var chp1 = "";
-var chp2 ="";
-var chpName1 = "";
-var chpName2 = "";
-var boardNumber = "";
-var boardId = "";
+        var gameCount = 0;
+        var win = 0;
+        var winGoal = 0;
+        var clickCount = 0;  
+        var chp1 = "";
+        var chp2 ="";
+        var chpName1 = "";
+        var chpName2 = "";
+        var boardNumber = "";
+        var boardId = "";
 
-function startGame(){
-        
+function startGame(){   
+               
         boardNumber = document.getElementById("boardSelection").value; 
         boardId = "board"+boardNumber;
         winGoal = parseInt(boardNumber);

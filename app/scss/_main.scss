@@ -22,6 +22,8 @@ main {
 
 .skills{
     padding: 1rem;
+    margin: auto;
+    max-width: 1024px;
     position: relative;
     display: grid;
     grid-template-columns: 1fr;
