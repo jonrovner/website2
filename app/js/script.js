@@ -5,8 +5,7 @@ function flip(e) {
     const card = e.parentNode.parentNode;
     var front = "";
     var back = "";
-    
-    
+       
     if (card.classList.contains('coding')) {
         back = backs[0];
         front = fronts[0];
@@ -17,8 +16,6 @@ function flip(e) {
         front = fronts[2];
         back = backs[2]
     };
-    
-        
     if (back.classList.contains('hidden')){
 
         front.classList.add('rotate');
@@ -36,8 +33,6 @@ function flip(e) {
         }   
 
 }
-
-
 function magnify(e){
 
     e.classList.add('magnify')

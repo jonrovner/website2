@@ -2,7 +2,7 @@ html {
   font-size: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Open Sans';
 }
 
 *, *::before, *::after {
@@ -160,6 +160,7 @@ main p {
 
 .card {
   display: block;
+  height: 20rem;
   -webkit-box-shadow: 5px 5px 5px 5px rgba(184, 176, 176, 0.5);
           box-shadow: 5px 5px 5px 5px rgba(184, 176, 176, 0.5);
   padding: 0.5rem;
@@ -171,6 +172,8 @@ main p {
 .card h2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 1.1;
   text-align: center;
   color: black;
 }
@@ -181,16 +184,6 @@ main p {
   text-align: center;
   font-weight: 300;
   font-size: smaller;
-}
-
-.cardImage {
-  width: 100%;
-  height: 10rem;
-  display: block;
-  margin-top: 1rem;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 0.5rem;
 }
 
 .works {
@@ -277,10 +270,9 @@ main p {
 
 .arrow {
   font-size: large;
+  font-weight: 300;
   text-align: center;
-  background-color: black;
   border-radius: 1rem;
-  color: white;
   width: 10%;
   margin-left: 80%;
   margin-bottom: 1rem;
