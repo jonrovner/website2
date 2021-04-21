@@ -19,101 +19,63 @@
         <main>
             <div id="calcu"></div>
         </main>
-        <footer>
-
-
-        </footer>
+        
        </div>   
-    
-    <script>        
-            
-            function getFibos(a) {
-                
-                var fib = [];
-                fib[0] = 1;
-                fib[1] = 2;
-                for (i = 2; i < a; i++) {
-                        fib[i] = fib[i - 2] + fib[i - 1];      
-                }
-                return fib;
-            }
-
-             
-            function isPrime(num) {
-                for(var i = 2; i < num; i++)
-                    if(num % i === 0) return false;
-                return num > 1;
-                }
-
-            function getLargestPrimeFactor(int){
-                for (i=int; i>0; i--){
-                    if (isPrime(i)){
-                      console.log(i + " is prime");
-                        if (isFactor(int, i)){
-                            console.log(i + "is the largest prime factor");
-                    }
-                    }
-                }
-            }
-            function isFactor(a, b){
-             return a % b == 0;
-            }
-
-    </script>
-    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+       
     <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
     <script>
 
-        class Calculator extends React.Component {
+      class Calculator extends React.Component {
         constructor(props){
-        super(props);
-        this.state = {
-          firstNum: 0,
-          isFisrtSet: false,
-          seccondNum: 0,
-          expression:"",
-          valueArr:[],
-          displayValue: "0"
-        }
+          super(props);
+          this.state = {
+            firstNum: 0,
+            isFisrtSet: false,
+            seccondNum: 0,
+            expression:"",
+            valueArr:[],
+            displayValue: "0"
+          }
         this.handleNumber = this.handleNumber.bind(this);
         this.handleOperator = this.handleOperator.bind(this);
         this.handleDecimal = this.handleDecimal.bind(this);
         this.evaluate = this.evaluate.bind(this);
         
-      }
-      handleNumber(e){
-        let {displayValue} = this.state;
-        const value = e.target.innerHTML;
-        
-        this.setState({
+        }
+        handleNumber(e){
+          let {displayValue} = this.state;
+          const value = e.target.innerHTML;
+          this.setState({
           displayValue: displayValue == 0
             ? value 
             : displayValue += value,
           isFisrtSet: true,
         })
-      }
+        }
       
       
-      handleOperator(e){
-        let {displayValue, firstNum, expression} = this.state;
-        const value = e.target.innerHTML;
-    
-        this.setState({
+        handleOperator(e){
+          let {displayValue, firstNum, expression} = this.state;
+          const value = e.target.innerHTML;
+          this.setState({
           firstNum: parseInt(displayValue),
           expression: expression + firstNum + value
-          
-        })
-        console.log(this.state)
-      }
-      handleDecimal(){
+         
+          })
+          console.log(this.state)
+        }
+      
+        handleDecimal(){
+        }
+
+        evaluate(){
         
-      }
-      evaluate(){
-        
-      }
-      render() {
-        return (
+        }
+      
+        render() {
+          return (
+          <>
             <div id="container">  
             <div id="display">{this.state.displayValue}</div>
             <div id="buttons" className="buttons">
@@ -136,6 +98,7 @@
                 <div id="equals">=</div>
         </div>  
         </div>
+        </>
         )
       }
       

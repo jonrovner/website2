@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="app/scss/style.css">
+
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="memotest">
+        <h3>Memotest</h3>
+        <select name="boardSelection" id="boardSelection" onchange="startGame()">
+            <option value = "8">baby</option>
+            <option value = "16">kid</option>
+            <option value= "30">ninja</option>
+        </select>    
+        <div id="boardContainer">
+        <div class="board" id="board"></div>
+        </div>
+        <button id="btn" onclick="startGame()">reset</button>
+        <div class="close" onclick="closeGame()">X</div>
+    </div>
+    <script src="app/js/script.js"></script>   
+</body>
+</html>

@@ -113,6 +113,11 @@ header h4 {
           transform: rotateY(180deg);
 }
 
+#mapid {
+  width: 400px;
+  height: 400px;
+}
+
 main {
   position: relative;
 }
@@ -288,6 +293,10 @@ main p {
 .magnify img {
   -webkit-transform: translate(3rem, 3rem) scale(2.7);
           transform: translate(3rem, 3rem) scale(2.7);
+}
+
+#mapid {
+  height: 400px;
 }
 
 .memotest {
