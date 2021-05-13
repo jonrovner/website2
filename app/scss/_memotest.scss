@@ -6,12 +6,21 @@
         margin-top: 0;
         padding-top: 1rem;
         margin-bottom: 1rem;
+        letter-spacing: 5px;
         }
 }
+
 #boardContainer {
     margin-top: 2%;
 }
 
+@keyframes shake {
+    0%   {transform: rotate(20deg)}
+  25%  {transform: rotate(-20deg)}
+  50%  {transform: rotate(20deg)}
+  100% {transform: rotate(-20deg)}
+    
+}
 
 .expanded {
     width: 100%;
@@ -19,6 +28,7 @@
     margin: 0.5rem;
 }
 #boardSelection {
+    padding: 0.5rem 1.5rem;
     margin-bottom: 0.5rem;
 }
 .board {
@@ -50,27 +60,34 @@
     
 }
 .chipback {
-    background-color: black;
+    background: linear-gradient(gray, black);
     margin: 1%;
-    width: 1.75rem;
-    height: 1.75rem;
+    width: 3.75rem;
+    height: 3.75rem;
+    border-radius: 10px;
     img {
-        height: 1.75rem;
-        width: 1.75rem;
+        height: 3.75rem;
+        width: 3.75rem;
+        border-radius: 10px;
+        border: 1px solid black
     }
     
 }
 .chip{
-    margin: 5%;
+    
     opacity: 0%;
 }
 .playing {
     opacity: 100%;
-    animation: shake 0.2s;
+    animation: shake 0.05s;
     animation-iteration-count: 1;
 }
 #btn{
-    margin-top: 1rem;
+    padding: 0.5rem 2rem;
+    background: none;
+    border-radius: 5px;
+    box-shadow: 0 0 15px 2px lightgray;
+    margin-top: 2rem;
 }
 
 

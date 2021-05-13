@@ -1,152 +1,39 @@
-main {
-    position: relative;
-    p {
-        font-style: italic;
-        font-weight: 300;
-        text-align: center;
-        line-height: 1.3;
-        margin-top: 0.5rem;
-    }
-}
 
-.overlay{
 
-    position: absolute;
-    background-color: grey;
-    top: 8rem;
-    left: 5%;
-    z-index: 1;
-    width: 90%;
-    min-height: 100vh;
-}
-
-.skills{
-    padding: 1rem;
-    margin: auto;
-    max-width: 1024px;
-    position: relative;
+.path{
+    width: 75%;
+    
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
 
-
-    @include breakpoint-up(medium){
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto;
-
-    }
-}
+    
+    
+}  
     
 .card {
-        display: block;
-        height: 20rem;
-        box-shadow: 5px 5px 5px 5px rgba(184, 176, 176, 0.5);
-        padding: 0.5rem;
-        margin-bottom: 1.5rem;
+             
+              
         transition: all 200ms ease-in-out;
 
-        h2 {
-            margin-top: 0.5rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            letter-spacing: 1.1;
+        h4{
             text-align: center;
-            color: black;
+            letter-spacing: 0.2rem;
         }
 
         p { 
             margin: 1rem;
             line-height: 1.5;
-            text-align: center;
+            
             font-weight: 300;
             font-size: smaller;
         }        
+        img{
+            width: 100%;
+            height: 50%;
+           
+        }
 
 }
         
 
-.works {
-    
-    width: 82.5%;
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    transition: all 200ms ease-in-out;
-    
-    .workThumb img {
-        width: 6rem;
-        height: 6rem;
-    }
-    .worksGrid {
-    position: relative;
-    display: grid;
-    height: 18rem;
-    left: -1rem;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    justify-content: center;
-    align-items: center;
-    
-       
-        .workGridItem{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-            h3 {
-                margin: 0.2rem;
-            }
-        }
-        a {
-        display: grid;
-        align-items: center;
-        justify-content: center;
-        margin: 0.75rem;
-    }
-
-    .workImage {
-        width: 4rem;
-        height: 4rem;
-        align-self: center;
-    }
-
-    h6 {
-        text-align: center;
-        margin-top: 0.2rem;
-        margin-bottom: 0.2rem;
-    }
-
-    .arrow{
-        margin-top: 4rem;
-    }
-}
-
-}
-.arrow {
-    font-size: large;
-    font-weight: 300;
-    text-align: center;
-    border-radius: 1rem;
-    width: 10%;
-    margin-left: 80%;
-    margin-bottom: 1rem;
-    box-shadow: 2px 2px 1px 2px rgba(184, 176, 176, 0.5);;
-
-}
-
-
-.rotate {
-    transform: rotateY(180deg);
-}
-.magnify {
-    img {
-        transform: translate(3rem, 3rem) scale(2.7);
-
-    }
-}
-
-#mapid{
-    height: 400px;
-}

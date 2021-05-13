@@ -9,17 +9,23 @@ html {
 body {
     margin: 0;
     padding: 0;
+    //background: url('/img/wave-haikei.svg');
+    //background-repeat: no-repeat;
+   // background-size: cover;
 }
 
 header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: #264653;
+    height: 1.5rem;
 
     h3{
         padding-left: 1rem;
         color: whitesmoke;
         font-weight: 200;
+        font-size: 13px
     }
 
     h4{
@@ -27,8 +33,20 @@ header {
         font-weight: 200;
         color: #e9c46A;
     }
+    button{
+        appearance: none;
+        background-color: transparent;
+        color: yellow;
+        font-weight: 700;
+    }
 }
 
+p {
+    
+    font-family: 'Roboto Slab', serif ;
+    text-align: left;
+    font-size: 14px;
+}
 
 
 .flex {
