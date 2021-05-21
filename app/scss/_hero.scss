@@ -1,6 +1,8 @@
 .hero{
-    margin-left: 1rem;
-    margin-bottom: 10rem;
+    max-width: 960px;
+    margin: auto;
+   // border: 1px solid red;
+    margin-bottom: 5rem;
     position: relative;
     display: flex;
     
@@ -9,8 +11,8 @@
         font-family: 'Roboto Slab', serif ;
         margin: 3rem auto;
         text-align: center;
-        font-size: 18px;
-        line-height: 1.5rem;
+        font-size: 1.5rem;
+        line-height: 2.5rem;
         
     }
 

@@ -3,18 +3,22 @@ html {
     box-sizing: border-box;
     font-family: 'Open Sans';
 }
+
 *, *::before, *::after {
     box-sizing: inherit;
 }
+
 body {
     margin: 0;
     padding: 0;
     //background: url('/img/wave-haikei.svg');
     //background-repeat: no-repeat;
    // background-size: cover;
+   max-width: 960px;
 }
 
 header {
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -44,8 +48,7 @@ header {
 p {
     
     font-family: 'Roboto Slab', serif ;
-    text-align: left;
-    font-size: 14px;
+    
 }
 
 
