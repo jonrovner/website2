@@ -22,13 +22,11 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #264653;
     height: 1.5rem;
+    border-bottom:gray;
 
     h3{
         padding-left: 1rem;
-        color: whitesmoke;
-        font-weight: 200;
         font-size: 13px
     }
 
@@ -40,7 +38,7 @@ header {
     button{
         appearance: none;
         background-color: transparent;
-        color: yellow;
+        
         font-weight: 700;
     }
 }

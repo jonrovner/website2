@@ -1,19 +1,27 @@
 .hero{
+    background-image: url('/img/web.jpg');
+    background-size: cover;
     max-width: 960px;
+    height: 100vh;
     margin: auto;
    // border: 1px solid red;
     margin-bottom: 5rem;
     position: relative;
     display: flex;
     
+    
     p {
        // width: 50%;
         font-family: 'Roboto Slab', serif ;
-        margin: 3rem auto;
+        margin: auto;
         text-align: center;
         font-size: 1.5rem;
-        line-height: 2.5rem;
-        
+        line-height: 15rem;
+        color: white;
+        text-shadow: gray;
+        span {
+            font-size: 2rem;
+        }    
     }
 
 }

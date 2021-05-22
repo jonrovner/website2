@@ -26,14 +26,12 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #264653;
   height: 1.5rem;
+  border-bottom: gray;
 }
 
 header h3 {
   padding-left: 1rem;
-  color: whitesmoke;
-  font-weight: 200;
   font-size: 13px;
 }
 
@@ -48,7 +46,6 @@ header button {
      -moz-appearance: none;
           appearance: none;
   background-color: transparent;
-  color: yellow;
   font-weight: 700;
 }
 
@@ -373,7 +370,10 @@ p {
 }
 
 .hero {
+  background-image: url("/img/web.jpg");
+  background-size: cover;
   max-width: 960px;
+  height: 100vh;
   margin: auto;
   margin-bottom: 5rem;
   position: relative;
@@ -384,9 +384,270 @@ p {
 
 .hero p {
   font-family: 'Roboto Slab', serif;
-  margin: 3rem auto;
+  margin: auto;
   text-align: center;
   font-size: 1.5rem;
-  line-height: 2.5rem;
+  line-height: 15rem;
+  color: white;
+  text-shadow: gray;
+}
+
+.hero p span {
+  font-size: 2rem;
+}
+
+body {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+#wrapper {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  max-width: 1024px;
+  margin: auto;
+}
+
+main {
+  max-width: 1024px;
+  margin: auto;
+  padding: 2rem;
+}
+
+.infotext {
+  font-family: 'Open Sans', sans-serif;
+  font-style: italic;
+  font-weight: lighter;
+  font-size: small;
+}
+
+.title {
+  display: -ms-grid;
+  display: grid;
+  font-family: 'Amatic SC', cursive;
+  margin-bottom: 2rem;
+  justify-items: center;
+}
+
+.week {
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 0.5fr (1fr)[7];
+      grid-template-columns: 0.5fr repeat(7, 1fr);
+  -ms-grid-rows: 25px 50px 50px;
+      grid-template-rows: 25px 50px 50px;
+  row-gap: 0.5rem;
+  -webkit-column-gap: 0.5rem;
+          column-gap: 0.5rem;
+}
+
+.item {
+  position: relative;
+  font-family: 'Amatic SC', cursive;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 0.3rem;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+}
+
+.menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  row-gap: 1rem;
+  -webkit-column-gap: 1rem;
+          column-gap: 1rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.menuitem {
+  max-width: 20%;
+  min-height: 2rem;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  font-family: 'Amatic SC', cursive;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 0.3rem;
+  cursor: move;
+  -webkit-transition: all 0.15s;
+  transition: all 0.15s;
+  overflow: hidden;
+}
+
+.menuitem .dishTitle {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  letter-spacing: 0.05em;
+}
+
+.menuitem img {
+  height: 10rem;
+}
+
+.newDishBtn {
+  margin: auto;
+  margin-top: 2rem;
+  margin-left: 45%;
+  max-width: 8rem;
+  min-height: 3rem;
+  position: relative;
+  font-family: 'Amatic SC', cursive;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 0.3rem;
+  cursor: move;
+  -webkit-transition: all 0.15s;
+  transition: all 0.15s;
+  overflow: hidden;
+}
+
+.dishControls {
+  -ms-grid-column-align: center;
+      justify-self: center;
+}
+
+.dishControls button {
+  border: none;
+}
+
+.selected {
+  background-color: lightcyan;
+}
+
+.ingredients {
+  background-color: blanchedalmond;
+  margin: 5px;
+  min-height: 2em;
+}
+
+.ingredientsList {
+  visibility: hidden;
+  margin-left: 1em;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+  font-size: smaller;
+  position: relative;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+#shoppingList {
+  background-color: whitesmoke;
+  min-height: 100px;
+  margin: 0.5em;
+}
+
+.newDishBtn {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  padding: 2em;
+}
+
+.addDishes {
+  display: none;
+  max-width: 20rem;
+  max-height: 30rem;
+  background-color: cornsilk;
+  margin: 1em;
+  position: relative;
+}
+
+.visible {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: small;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  padding: 2rem;
+  z-index: 1;
+  border-radius: 0.4rem;
+  -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.visible input {
+  font-family: 'Amatic SC', cursive;
+  letter-spacing: 1px;
+  border-radius: 0.5rem;
+  padding: 0.2rem;
+  border: hidden;
+}
+
+.visible button {
+  border: hidden;
+  -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.visible * {
+  margin-top: 0.3rem;
+  margin-bottom: 0.2rem;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: lighter;
+  font-size: small;
+}
+
+.visible a {
+  border: 1px, solid, black;
+  text-decoration: none;
+  border-radius: 1em;
+}
+
+.close {
+  border: 1px, solid, black;
+  margin-left: 95%;
+}
+
+#shoppingListContainer {
+  padding: 0.5rem;
+  margin-top: 2rem;
+  margin-left: 20%;
+  margin-right: 20%;
+  background-color: ivory;
+  -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  font-family: 'Open Sans', sans-serif;
+  font-style: italic;
+  font-size: smaller;
 }
 /*# sourceMappingURL=style.css.map */
