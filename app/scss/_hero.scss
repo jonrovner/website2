@@ -1,27 +1,42 @@
 .hero{
-    background-image: url('/img/web.jpg');
-    background-size: cover;
-    max-width: 960px;
-    height: 100vh;
-    margin: auto;
-   // border: 1px solid red;
-    margin-bottom: 5rem;
+    margin-bottom: 2rem;
     position: relative;
-    display: flex;
+     
     
-    
-    p {
-       // width: 50%;
-        font-family: 'Roboto Slab', serif ;
-        margin: auto;
+    h1 {
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        top: 8rem;
+        left: 0;
+        right: 0;
         text-align: center;
-        font-size: 1.5rem;
-        line-height: 15rem;
+        font-family: 'Roboto Slab', serif ;
+        font-size: 1.1rem;
         color: white;
-        text-shadow: gray;
-        span {
-            font-size: 2rem;
-        }    
+        text-shadow: 1px 1px 2px black;
+        letter-spacing: 0.1rem;            
     }
 
+    h2{
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        top:11.5rem;
+        text-align: center;
+        color: white;
+        font-family: 'Roboto Slab', serif ;
+        font-size: 0.9rem;
+        text-shadow: 1px 1px 2px black;
+    }
+
+}
+.heroImage{
+    //position: absolute;
+    img{
+    max-width: 100%;
+    max-height: 100%;
+}
 }
