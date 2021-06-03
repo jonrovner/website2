@@ -1,5 +1,6 @@
 //tictactoe
-            
+const els = Array.from(document.querySelectorAll('.box'))
+els.forEach(e=>e.addEventListener('click', play))            
 let player = "X";
 var playerXmoves = [];
 var PlayerYmoves = [];
@@ -28,15 +29,17 @@ function checkForWin(playerMoves) {
 }
 
 function play(e){
-    var move = e.id;
+    console.log(player)
+    var move = e.target.id
+    console.log(move)
     if (player == "X"){
-            e.innerHTML = player;
+            e.target.innerHTML = player;
             playerXmoves.push(move);
             checkForWin(playerXmoves);
             player = "O";
             }
     else{
-        e.innerHTML = player;
+        e.target.innerHTML = player;
         PlayerYmoves.push(move);
         checkForWin(PlayerYmoves);
         player = "X";

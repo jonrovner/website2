@@ -291,6 +291,19 @@ footer p {
           animation-iteration-count: 2;
 }
 
+.button {
+  margin: 1rem auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border: 2px solid black;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: transparent;
+  font-weight: 700;
+}
+
 .tictactoe {
   text-align: center;
 }
@@ -329,6 +342,19 @@ footer p {
           justify-content: center;
 }
 
+.button {
+  margin: 1rem auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border: 2px solid black;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: transparent;
+  font-weight: 700;
+}
+
 .hero {
   margin-bottom: 2rem;
   position: relative;
@@ -347,6 +373,7 @@ footer p {
   color: white;
   text-shadow: 1px 1px 2px black;
   letter-spacing: 0.1rem;
+  max-width: 80%;
 }
 
 .hero h2 {
@@ -378,6 +405,13 @@ footer p {
 }
 
 @media (min-width: 40em) {
+  .path {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 64em) {
   .path {
     -ms-grid-columns: 1fr 1fr 1fr 1fr;
         grid-template-columns: 1fr 1fr 1fr 1fr;
