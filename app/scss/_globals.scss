@@ -14,7 +14,7 @@ body {
     //background: url('/img/wave-haikei.svg');
     //background-repeat: no-repeat;
    // background-size: cover;
-   max-width: 960px;
+  
 }
 
 header {
@@ -47,6 +47,12 @@ p {
     
     font-family: 'Roboto Slab', serif ;
     
+}
+footer{
+    margin-top: 2rem;
+    p{
+        text-align: center;
+    }
 }
 
 
