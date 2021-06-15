@@ -15,6 +15,10 @@ body {
   padding: 0;
 }
 
+canvas {
+  display: block;
+}
+
 header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -355,44 +359,99 @@ footer p {
   font-weight: 700;
 }
 
-.hero {
+#hero {
   margin-bottom: 2rem;
+  position: relative;
+  height: 80vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#hero h1 {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: 'Roboto Slab', serif;
+  font-size: 3.5rem;
+  letter-spacing: 0.15rem;
+  max-width: 80%;
+  border-right: .15em solid orange;
+  white-space: nowrap;
+}
+
+#hero h2 {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-family: 'Roboto Slab', serif;
+}
+
+#hero #canvas {
   position: relative;
 }
 
-.hero h1 {
+#hero .heroImage {
   position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  top: 5%;
-  left: 0;
-  right: 0;
-  text-align: center;
-  font-family: 'Roboto Slab', serif;
-  font-size: 1.1rem;
-  color: white;
-  text-shadow: 1px 1px 2px black;
-  letter-spacing: 0.1rem;
-  max-width: 80%;
+  height: 325px;
+  width: 184px;
+  left: 40%;
+  background: url("walk3.png") 0px 0px;
+  -webkit-animation: play 0.8s steps(8) infinite;
+          animation: play 0.8s steps(8) infinite;
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
 }
 
-.hero h2 {
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  bottom: 10%;
-  text-align: center;
-  color: white;
-  font-family: 'Roboto Slab', serif;
-  font-size: 0.9rem;
-  text-shadow: 1px 1px 2px black;
+@-webkit-keyframes play {
+  100% {
+    background-position: -1472px;
+  }
 }
 
-.heroImage img {
-  max-width: 100%;
-  max-height: 100%;
+@keyframes play {
+  100% {
+    background-position: -1472px;
+  }
+}
+
+#hero .tree {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  background: url("tree.png");
+  left: 100%;
+  -webkit-transform: translate(-100%) scale(0.5);
+          transform: translate(-100%) scale(0.5);
+  -webkit-transition: translate 10s;
+  transition: translate 10s;
+  -webkit-animation: pass 10s infinite;
+          animation: pass 10s infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+
+@-webkit-keyframes pass {
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes pass {
+  100% {
+    left: 0;
+  }
 }
 
 .path {

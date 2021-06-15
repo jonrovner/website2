@@ -1,43 +1,74 @@
-.hero{
+#hero{
     margin-bottom: 2rem;
     position: relative;
-     
+    height: 80vh;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
     
     h1 {
-        position: absolute;
-        margin-left: auto;
-        margin-right: auto;
-        top: 5%;
-        left: 0;
-        right: 0;
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+          
         text-align: center;
         font-family: 'Roboto Slab', serif ;
-        font-size: 1.1rem;
-        color: white;
-        text-shadow: 1px 1px 2px black;
-        letter-spacing: 0.1rem;
-        max-width: 80%;            
+        font-size: 3.5rem;
+        
+        letter-spacing: 0.15rem;
+        max-width: 80%;     
+          
+        border-right: .15em solid orange;
+        white-space: nowrap;
+        
     }
 
     h2{
-        position: absolute;
+        
         margin-left: auto;
         margin-right: auto;
-        left: 0;
-        right: 0;
-        bottom: 10%;
         text-align: center;
-        color: white;
         font-family: 'Roboto Slab', serif ;
-        font-size: 0.9rem;
-        text-shadow: 1px 1px 2px black;
+        
+       
+    }
+    #canvas{
+        position: relative;
     }
 
+    .heroImage{
+        position: absolute;
+        height: 325px;
+        width: 184px;
+        left: 40%;
+        background: url("walk3.png") 0px 0px;
+        //background-position: 325px;
+        animation: play 0.8s steps(8) infinite;
+        transform: scale(0.5);
+
+    }
+    
+    @keyframes play {
+        100% {
+                background-position: -1472px; 
+            }
+    }
+    .tree{
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        background: url("tree.png");
+        left:100%;
+        transform: translate(-100%) scale(0.5); 
+        transition: translate 10s;
+        animation: pass 10s infinite;
+        animation-timing-function: linear;
+    }
+    @keyframes pass {
+        100% {
+                left: 0;
+            }
+    }
 }
-.heroImage{
-    //position: absolute;
-    img{
-    max-width: 100%;
-    max-height: 100%;
-}
-}
+
