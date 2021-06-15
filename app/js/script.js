@@ -60,7 +60,7 @@ function preload(){
 }
 
 function setup(){
-  var canvas =  createCanvas(600, 600);
+  var canvas =  createCanvas(windowWidth*0.6, 375);
   frameRate(30);
   canvas.parent('anim')
   
@@ -70,15 +70,16 @@ function setup(){
     let img = spritesheet.get(pos.x, pos.y, 92, 162)
     animation.push(img)
   }
-  man = new Walker(animation, 250, 175, 0.5);
-  tree = new Thing(treeImg, width, 150, 20, 20, 0.5)
-  bush = new Thing(treeImg, width, 130, 100, 100, 1)
+  man = new Walker(animation, windowWidth/3, 125, 0.5);
+  tree = new Thing(treeImg, width, 88, 20, 20, 0.3)
+  bush = new Thing(treeImg, width, 100, 120, 120, 0.8)
 }
 
 function draw(){
 
   background(255)
-  line(0,168,width,168)
+  stroke(150)
+  line(0,100,width,100)
   
   man.show();
   man.animate();
