@@ -1,11 +1,14 @@
 // p5.js animation
 
+
 let spritesheet;
 let spritedata;
-let animation = []
+let tree;
+let animation = [];
 let man;
-
-class Sprite {
+let bush;
+  
+class Walker {
   constructor(animation, x, y, speed){
     this.x = x;
     this.y = y;
@@ -20,7 +23,7 @@ class Sprite {
     image(this.animation[index], this.x, this.y)
   }
   animate(){
-    this.index += this.speed;
+    this.index += 0.2;
     //this.x += this.speed * 18;
     if (this.x > width){
       this.x = -this.w
@@ -28,28 +31,62 @@ class Sprite {
   }
 }
 
+class Thing {
+  constructor(pic, x, y, w, h, speed){
+    this.pic = pic;
+    this.y = y;
+    this.x = x;
+    this.w = w;
+    this.h = h;
+    this.speed = speed;
+
+  }
+  show(){
+    image(this.pic, this.x, this.y, this.w, this.h)
+  }
+  move(){
+    this.x -= this.speed;
+    if (this.x <0){
+      this.x = width
+    }
+
+  }
+}
+
 function preload(){
   spritedata = loadJSON('walk.json')
   spritesheet = loadImage('walk3.png')
+  treeImg = loadImage('tree.png')
 }
 
 function setup(){
   var canvas =  createCanvas(600, 600);
+  frameRate(30);
   canvas.parent('anim')
-  console.log(spritedata)
+  
   let frames = spritedata.frames;
   for (let i= 0; i<frames.length; i++){
     let pos = frames[i].position
     let img = spritesheet.get(pos.x, pos.y, 92, 162)
     animation.push(img)
   }
-  man = new Sprite(animation, 250, 175, 0.1)
+  man = new Walker(animation, 250, 175, 0.5);
+  tree = new Thing(treeImg, width, 150, 20, 20, 0.5)
+  bush = new Thing(treeImg, width, 130, 100, 100, 1)
 }
 
 function draw(){
+
   background(255)
+  line(0,168,width,168)
+  
   man.show();
   man.animate();
+  tree.show();
+  tree.move();
+  bush.show();
+  bush.move();
+  
 }
 
 
