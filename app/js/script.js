@@ -7,6 +7,8 @@ let tree;
 let animation = [];
 let man;
 let bush;
+let r, g, b;
+
   
 class Walker {
   constructor(animation, x, y, speed){
@@ -72,12 +74,17 @@ function setup(){
   }
   man = new Walker(animation, windowWidth/3, 125, 0.5);
   tree = new Thing(treeImg, width, 88, 20, 20, 0.3)
-  bush = new Thing(treeImg, width, 100, 120, 120, 0.8)
+  bush = new Thing(treeImg, width, 60, 140, 140, 0.8)
 }
 
 function draw(){
+  r=255
+  g=255
+  b=255
+  
 
-  background(255)
+  background(r, g, b)
+  
   stroke(150)
   line(0,100,width,100)
   
@@ -87,10 +94,7 @@ function draw(){
   tree.move();
   bush.show();
   bush.move();
-  
 }
-
-
 
 //Type effect
 
