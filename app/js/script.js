@@ -83,9 +83,9 @@ function draw(){
   b=255
   
 
-  background(r, g, b)
+  background(map(bush.x, 0, width, 0, 255), map(tree.x, 0, width, 100, 255), b)
   
-  stroke(150)
+  stroke(190)
   line(0,100,width,100)
   
   man.show();
